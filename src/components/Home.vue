@@ -9,9 +9,35 @@
       <button class="button">Help</button>
       <div class="task">
         <div class="task__wrapper">
-          <ul class="task__list">
-            <li class="task__item"></li>
-          </ul>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="task__switch">
+                <button>Open task</button>
+                <button>Closed task</button>
+              </div>
+            </div>
+            <div class="col-sm-9">
+              <ul class="task__list">
+                <li class="task__item" v-for="task in tasks" :key="task.id">
+                  <div class="task__logo-part">
+                    <img
+                      class="task__logo"
+                      :src="`${task.projectLogo}`"
+                      :alt="`${task.project} logo`"
+                    >
+                  </div>
+                  <div class="task__desc-part">
+                    <div class="task__item-header">
+                      <a class="task__project-title" href="`${task.projectLink}`">{{task.project}}</a>
+                      <a class="task__author" href="`${task.authorLink}`">{{task.author}}</a>
+                    </div>
+                    <div class="task__item-main"></div>
+                    <div class="task__item-footer"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -25,16 +51,18 @@ export default {
       tasks: [
         {
           id: 1,
-          author: "Kaol-Fu",
-          authorLink: "https://github.com/Kaol-Fu",
-          project: "puppeteer",
-          projectLink: "https://github.com/GoogleChrome/puppeteer",
+          author: "Alex Shu",
+          authorLink: "https://github.com/Alexandrshy",
+          project: "OpenHelpList",
+          projectLink: "https://github.com/Alexandrshy/OpenHelpList",
           projectLogo:
             "https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png",
-          title:
-            "Puppeteer ignores some CSS rules to print PDF when I used the @media print",
+          title: "Modify README.md",
           description:
-            "Set some CSS rules in @media print, then print the html to pdf. You can find some element's CSS rules are ignored by Puppeteer."
+            "Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md",
+          language: "JavaScript",
+          level: "junior",
+          completed: false
         }
       ]
     };
@@ -44,4 +72,5 @@ export default {
 
 <style scoped>
 @import "../style/home/index.css";
+@import "../style/task/index.css";
 </style>

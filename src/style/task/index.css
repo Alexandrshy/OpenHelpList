@@ -1,0 +1,36 @@
+.task {
+  padding: 6rem 0;
+}
+
+.task__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background-image: url("../../assets/dot.svg");
+  background-repeat: repeat-x, repeat-x;
+  background-position: 0 0;
+}
+
+.task__item {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 2rem 1rem;
+  background-image: url("../../assets/dot.svg");
+  background-repeat: repeat-x, repeat-x;
+  background-position: 0 100%;
+}
+
+.task__logo-part {
+  width: 100px;
+  padding: 0 25px;
+}
+
+.task__desc-part {
+  width: calc(100% - 50px);
+  padding: 0 25px;
+}
+
+.task__logo {
+  display: block;
+  width: 100%;
+}
