@@ -1,0 +1,25 @@
+.footer {
+  padding: 25px 0;
+  background-color: #242427;
+  text-align: center;
+}
+
+.footer__desc {
+  font-size: 0.85rem;
+  color: #81827e;
+}
+
+.footer__link {
+  display: inline-block;
+  color: #81827e;
+  border-bottom: 1px solid;
+}
+
+.footer__link:focus {
+  outline: none;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  border-bottom-color: transparent;
+}

@@ -1,0 +1,86 @@
+.burger-menu {
+  z-index: 11;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.35s ease;
+}
+
+.burger-menu:focus {
+  outline-color: #053b93;
+}
+
+.burger-menu__inner,
+.burger-menu__inner:before,
+.burger-menu__inner:after {
+  background-color: #2f2f33;
+  border-radius: 4px;
+  position: absolute;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  width: 25px;
+  height: 3px;
+}
+
+.burger-menu__inner {
+  left: 13px;
+  top: 23px;
+}
+
+.burger-menu__inner:before,
+.burger-menu__inner:after {
+  content: "";
+  display: block;
+}
+
+.burger-menu__inner:before {
+  top: -9px;
+  transition: top 0.1s 0.14s ease, opacity 0.1s ease, background-color 0.1s ease;
+}
+
+.burger-menu__inner:after {
+  bottom: -9px;
+  transition: bottom 0.1s 0.14s ease,
+    transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    background-color 0.1s ease;
+}
+
+.burger-menu.is-active {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.burger-menu.is-active:focus {
+  outline-color: #fff;
+}
+
+.burger-menu.is-active .burger-menu__inner,
+.burger-menu.is-active .burger-menu__inner:before,
+.burger-menu.is-active .burger-menu__inner:after {
+  background-color: #fff;
+}
+
+.burger-menu.is-active .burger-menu__inner:before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.1s ease, opacity 0.1s 0.14s ease, background-color 0.1s ease;
+}
+
+.burger-menu.is-active .burger-menu__inner {
+  transform: rotate(45deg);
+  transition-delay: 0.14s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.burger-menu.is-active .burger-menu__inner:after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.1s ease,
+    transform 0.1s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1),
+    background-color 0.1s ease;
+}

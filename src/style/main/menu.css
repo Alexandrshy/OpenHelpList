@@ -1,0 +1,119 @@
+.menu {
+  z-index: 10;
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  background: #053b93;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: opacity 0.35s ease, left 0.35s ease, visibility 0.35s ease;
+  visibility: hidden;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.menu.is-active {
+  left: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu__wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu__list {
+  width: 100%;
+  margin: 0;
+  padding: 3vw 0 5vw;
+  list-style: none;
+  text-align: center;
+}
+
+.menu__list:last-child {
+  padding-top: 0;
+}
+
+.menu__item {
+  margin-bottom: 3vw;
+}
+
+.menu__item:last-child {
+  margin-bottom: 0;
+}
+
+.menu__link {
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  font-size: calc(40px + 40 * ((100vw - 800px) / 390));
+  line-height: 1.2;
+  letter-spacing: 2.5px;
+  border-bottom: calc(8px + 1 * ((100vw - 800px) / 390)) solid transparent;
+}
+
+.menu__link:focus {
+  outline: none;
+}
+
+.menu__link:hover,
+.menu__link:focus {
+  border-bottom-color: #fff;
+}
+
+.menu__social {
+  display: inline-block;
+  font-size: 0;
+  margin: 0 15px;
+}
+
+.menu__social-link {
+  display: inline-block;
+  font-size: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #fff;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.25s ease;
+}
+
+.menu__social-link:focus {
+  outline: none;
+}
+
+.menu__social-link:hover,
+.menu__social-link:focus {
+  box-shadow: 0px 0px 4px 3px #fff;
+}
+
+.menu__social-link.menu__social-link--twitter {
+  background-image: url("../../assets/twitter-logo.svg");
+  background-position: 8px;
+}
+
+.menu__social-link.menu__social-link--linkedin {
+  background-image: url("../../assets/linkedin-logo.svg");
+  background-position: 8px 6px;
+}
+
+@media (max-width: 992px) {
+  .menu__link {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu__link {
+    font-size: 42px;
+  }
+}

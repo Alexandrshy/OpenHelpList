@@ -1,0 +1,60 @@
+@import "menu.css";
+@import "burgerMenu.css";
+@import "button.css";
+@import "grid.css";
+@import "header.css";
+@import "footer.css";
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  color: #2f2f33;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+.h1 {
+  position: relative;
+  margin: 0 0 2.25rem;
+  padding-bottom: 2.2rem;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+h1:after,
+.h1:after,
+h1:before,
+.h1:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  background-color: #053b93;
+}
+
+h1:before,
+.h1:before {
+  left: 0;
+  width: 62px;
+  height: 5px;
+  border-radius: 5% 5% 5% 5% / 50% 50% 50% 50%;
+}
+
+h1:after,
+.h1:after {
+  position: absolute;
+  left: 65px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border-radius: 50%;
+}
