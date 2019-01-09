@@ -16,6 +16,16 @@ a {
   text-decoration: none;
 }
 
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+}
+
 p {
   margin: 0;
 }
@@ -31,10 +41,35 @@ h1,
   letter-spacing: -1px;
 }
 
+h2,
+.h2 {
+  position: relative;
+  margin: 0 0 2.2rem;
+  padding-bottom: 2rem;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -1px;
+}
+
+h3,
+.h3 {
+  position: relative;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
 h1:after,
 .h1:after,
 h1:before,
-.h1:before {
+.h1:before,
+h2:after,
+.h2:after,
+h2:before,
+.h2:before {
   content: "";
   position: absolute;
   bottom: 0;
