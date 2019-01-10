@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header class="header">
-      <router-link to="/">logo</router-link>
+      <router-link to="/" class="header__logo">
+        <img src="./assets/cookie-logo.svg" alt>
+      </router-link>
     </header>
     <button class="burger-menu" :class="{'is-active': menuShow}" @click="menuShow = !menuShow">
       <span class="burger-menu__inner"></span>

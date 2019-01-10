@@ -34,3 +34,14 @@
   bottom: -2px;
   right: -2px;
 }
+
+@media (max-width: 768px) {
+  .button {
+    padding: 15px 30px 13px;
+    font-size: 0.85em;
+  }
+  .button::before {
+    bottom: -5px;
+    right: -5px;
+  }
+}

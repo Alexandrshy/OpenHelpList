@@ -12,6 +12,10 @@ body {
   color: #2f2f33;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
 }
@@ -55,7 +59,7 @@ h2,
 h3,
 .h3 {
   position: relative;
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -92,4 +96,32 @@ h1:after,
   height: 5px;
   border-radius: 50%;
   border-radius: 50%;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  h1,
+  .h1 {
+    margin: 0 0 1.85rem;
+    padding-bottom: 1.2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  h1:before,
+  .h1:before {
+    width: 45px;
+    height: 4px;
+  }
+
+  h1:after,
+  .h1:after {
+    left: 48px;
+    width: 4px;
+    height: 4px;
+  }
 }

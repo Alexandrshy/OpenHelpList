@@ -7,7 +7,7 @@
 }
 
 .page-selector {
-  padding: 55px 0;
+  padding: 75px 0;
 }
 
 .row {
@@ -29,10 +29,20 @@
   .container {
     max-width: 1000px;
   }
+
+  .page-selector {
+    padding: 55px 0;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
     max-width: 700px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .page-selector {
+    padding: 35px 0;
   }
 }

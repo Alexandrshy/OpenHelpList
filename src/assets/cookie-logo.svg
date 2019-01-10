@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="85px" height="85px" viewBox="0 0 85 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>cookie</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g id="Artboard-2" transform="translate(-255.000000, -595.000000)" stroke-width="2">
+            <g id="Group-30-Copy-2" transform="translate(259.000000, 604.000000)">
+                <circle id="Oval-115" stroke="#3F596B" fill="#669FF2" stroke-linecap="round" cx="38" cy="35" r="35"></circle>
+                <path d="M37.4770985,13.9392464 C37.1672947,14.9039001 37,15.9324132 37,17 C37,22.1249628 40.8552914,26.349474 45.8239112,26.9315705 C44.6712875,28.6709585 44,30.7570855 44,33 C44,39.0751322 48.9248678,44 55,44 C56.800188,44 58.4993759,43.567567 59.9993532,42.8009114 C59.9997842,42.8672234 60,42.9335865 60,43 C60,59.5685425 46.5685425,73 30,73 C13.4314575,73 0,59.5685425 0,43 C0,26.4314575 13.4314575,13 30,13 C32.5815009,13 35.0868461,13.3260612 37.4770985,13.9392464 Z M30,53 C34.418278,53 38,49.418278 38,45 C38,40.581722 34.418278,37 30,37 C25.581722,37 22,40.581722 22,45 C22,49.418278 25.581722,53 30,53 Z" id="Combined-Shape" stroke="#3F596B" fill="#F3CDC8" stroke-linecap="round"></path>
+                <path d="M37.6683805,20.6020451 L37.2684523,20.8948129 C33.2513807,23.8355133 26.7458031,23.8334517 22.7315477,20.8948129 L21.4841415,19.9816481 C17.4670699,17.0409476 14.6516689,18.6701077 15.1894772,23.6158742 L15.3565979,25.1527421 C15.8947835,30.1019784 12.6402092,35.7349431 8.08814567,37.7420707 L6.67361866,38.3657739 C2.11836158,40.3743096 2.12155508,43.6270985 6.67361866,45.6342261 L8.08814567,46.2579293 C12.6434028,48.266465 15.8944062,53.9014913 15.3565979,58.8472579 L15.1894772,60.3841258 C14.6512916,65.333362 17.4698861,66.9569907 21.4841415,64.0183519 L22.7315477,63.1051871 C26.7486193,60.1644867 33.2541969,60.1665483 37.2684523,63.1051871 L38.5158585,64.0183519 C42.5329301,66.9590524 45.3483311,65.3298923 44.8105228,60.3841258 L44.6434021,58.8472579 C44.1052165,53.8980216 47.3597908,48.2650569 51.9118543,46.2579293 L53.3263813,45.6342261 C54.4445095,45.1412132 55.2879908,44.573234 55.856967,43.9671116 C55.5741724,43.9889026 55.2883822,44 55,44 C48.9248678,44 44,39.0751322 44,33 C44,31.4813196 44.3077626,30.034521 44.8643217,28.7185705 C44.7164533,28.0511944 44.6249327,27.3779942 44.5955615,26.709047 C41.4140132,25.9237638 38.8323701,23.6155136 37.6683805,20.6020451 Z M30,52.8134915 C35.9721265,52.8134915 40.8134915,47.9721265 40.8134915,42 C40.8134915,36.0278735 35.9721265,31.1865085 30,31.1865085 C24.0278735,31.1865085 19.1865085,36.0278735 19.1865085,42 C19.1865085,47.9721265 24.0278735,52.8134915 30,52.8134915 L30,52.8134915 Z" id="Combined-Shape" stroke="#3F596B" fill="#B976DD" stroke-linecap="round"></path>
+                <path d="M37,28 L38,29" id="Line" stroke="#FFFFFF" stroke-linecap="square"></path>
+                <path d="M11,42 L12,43" id="Line-Copy-83" stroke="#FFFFFF" stroke-linecap="square"></path>
+                <path d="M26,56 L27,57" id="Line-Copy-89" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M36,57 L37,57" id="Line-Copy-84" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M45,43 L46,44" id="Line-Copy-85" stroke="#FE8657" stroke-linecap="square"></path>
+                <path d="M20,28 L19,29" id="Line-Copy-81" stroke="#FE8657" stroke-linecap="square"></path>
+                <path d="M17,47 L16,48" id="Line-Copy-88" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M52,23 L51,24" id="Line-Copy-91" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M43,48 L42,49" id="Line-Copy-87" stroke="#FE8657" stroke-linecap="square"></path>
+                <path d="M27,28 L26,27" id="Line-Copy-86" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M69,33 L68,32" id="Line-Copy-92" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M16,38 L15,39" id="Line-Copy-90" stroke="#E7CE70" stroke-linecap="square"></path>
+                <path d="M22,57 L20,55" id="Line-Copy-82" stroke="#FE8657" stroke-linecap="square"></path>
+                <path d="M44,21 C44,21 44,15 46.5,15 C49,15 49,17.4 49,17.4 L44,21 Z" id="Path-70" stroke="#3F596B" fill="#B976DD" stroke-linecap="round"></path>
+                <path d="M58,30 C58,30 58,21 62,21 C66,21 66,24.6 66,24.6 L58,30 Z" id="Path-70-Copy" stroke="#3F596B" fill="#B976DD" stroke-linecap="round" transform="translate(62.000000, 25.500000) rotate(-59.000000) translate(-62.000000, -25.500000) "></path>
+                <path d="M71,14.2784091 C71,14.2784091 75.5454545,10.8693182 76.6818182,13.1420455 C77.8181818,15.4147727 75.5454545,17.6875 75.5454545,17.6875 L71,14.2784091 Z" id="Path-71" stroke="#3F596B" fill="#F3CDC8" stroke-linecap="round"></path>
+                <path d="M59,18 C59,18 59,16 62,15" id="Path-72" stroke="#F3CDC8" stroke-linecap="round"></path>
+                <path d="M54,34 L58,37" id="Path-73" stroke="#B976DD" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

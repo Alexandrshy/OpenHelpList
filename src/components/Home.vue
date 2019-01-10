@@ -8,15 +8,24 @@
       >Want to grow as a developer and find great work? Do not wipe your pants - engage Open Source projects. So the easiest way to get into the best development teams and put yourself in the summary of this project.</p>
       <button class="button">Help</button>
       <div class="task">
-        <div class="task__wrapper row">
-          <ul class="task__switch-list">
-            <li class="task__switch-item">
-              <button class="task__switch-button is-active">Open task</button>
-            </li>
-            <li class="task__switch-item">
-              <button class="task__switch-button">Closed task</button>
-            </li>
-          </ul>
+        <div class="task__wrapper">
+          <div class="task__list-wrapper">
+            <ul class="task__switch-list">
+              <li class="task__switch-item">
+                <button class="task__switch-button is-active">
+                  Open task
+                  <span class="task__switch-quantity">3</span>
+                </button>
+              </li>
+              <li class="task__switch-item">
+                <button class="task__switch-button">
+                  Closed task
+                  <span class="task__switch-quantity">1</span>
+                </button>
+              </li>
+            </ul>
+            <button class="button">Post task</button>
+          </div>
           <ul class="task__list">
             <li class="task__item" v-for="task in tasks" :key="task.id">
               <div class="task__logo-part">
@@ -35,7 +44,7 @@
                 </div>
                 <div class="task__item-main">
                   <h3 class="task__title">{{task.title}}</h3>
-                  <p class="task__description">{{task.description}}</p>
+                  <div class="task__description" v-html="task.description"></div>
                 </div>
                 <div class="task__item-footer"></div>
               </div>
@@ -77,7 +86,7 @@ export default {
             "https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png",
           title: "Make the first commit",
           description:
-            "Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit",
+            "<p>Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit</p> <p>Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the <a href='#'>first</a> commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit</p>",
           language: "JavaScript",
           level: "junior",
           completed: true
