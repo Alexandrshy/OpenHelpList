@@ -15,10 +15,6 @@
   border-bottom: 1px solid;
 }
 
-.footer__link:focus {
-  outline: none;
-}
-
 .footer__link:hover,
 .footer__link:focus {
   border-bottom-color: transparent;

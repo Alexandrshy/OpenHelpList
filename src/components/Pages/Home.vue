@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section class="page-selector">
-      <p class="title">OpenHelpList</p>
+      <title-project></title-project>
       <h1 class="h1">Open source projects need you</h1>
       <p
         class="subtitle"
@@ -57,7 +57,13 @@
 </template>
 
 <script>
+import Tabs from "../Tabs/Tabs.vue";
+import TitleProject from "../TitleProject/TitleProject.vue";
 export default {
+  components: {
+    Tabs,
+    titleProject: TitleProject
+  },
   data() {
     return {
       tasks: [
@@ -98,6 +104,6 @@ export default {
 </script>
 
 <style scoped>
-@import "../style/home/index.css";
-@import "../style/task/index.css";
+@import "../../style/home/index.css";
+@import "../../style/task/index.css";
 </style>

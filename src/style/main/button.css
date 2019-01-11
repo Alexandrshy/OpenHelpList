@@ -25,10 +25,6 @@
   transition: bottom 0.1s ease, right 0.1s ease;
 }
 
-.button:focus {
-  outline: none;
-}
-
 .button:hover::before,
 .button:focus::before {
   bottom: -2px;

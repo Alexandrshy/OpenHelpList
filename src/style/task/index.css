@@ -82,12 +82,6 @@
 .task__header-link {
   font-weight: 300;
   font-size: 0.85rem;
-  color: #57575a;
-}
-
-.task__header-link:hover,
-.task__header-link:focus {
-  color: #053b93;
 }
 
 .task__desc-part {

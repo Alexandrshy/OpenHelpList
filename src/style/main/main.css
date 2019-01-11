@@ -1,9 +1,5 @@
-@import "menu.css";
-@import "burgerMenu.css";
 @import "button.css";
 @import "grid.css";
-@import "header.css";
-@import "footer.css";
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 
 html,
@@ -16,8 +12,18 @@ body {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 a {
   text-decoration: none;
+  color: #57575a;
+}
+
+a:hover,
+a:focus {
+  color: #053b93;
 }
 
 a,
@@ -38,7 +44,7 @@ h1,
 .h1 {
   position: relative;
   margin: 0 0 2.25rem;
-  padding-bottom: 2.2rem;
+  padding-bottom: 1.35rem;
   font-size: 4.5rem;
   font-weight: 700;
   line-height: 1.25;

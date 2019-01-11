@@ -1,39 +1,40 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '@/components/Home'
-import About from '@/components/About'
-import Contact from '@/components/Contact'
-import Login from '@/components/Auth/Login'
-import Registration from '@/components/Auth/Registration'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "@/components/Pages/Home";
+import About from "@/components/Pages/About";
+import Contact from "@/components/Pages/Contact";
+import Login from "@/components/Pages/Auth/Login";
+import Registration from "@/components/Pages/Auth/Registration";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: "/",
+      name: "home",
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/about",
+      name: "about",
       component: About
     },
     {
-      path: '/contact',
-      name: 'contact',
+      path: "/contact",
+      name: "contact",
       component: Contact
     },
     {
-      path: '/login',
-      name: 'login',
+      path: "/login",
+      name: "login",
       component: Login
     },
     {
-      path: '/registration',
-      name: 'registration',
+      path: "/registration",
+      name: "registration",
       component: Registration
     }
   ]
-})
+});

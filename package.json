@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "bulma": "^0.7.2",
+    "eslint-config-prettier": "^3.3.0",
     "normalize.css": "^8.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
