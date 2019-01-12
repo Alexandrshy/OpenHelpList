@@ -1,0 +1,52 @@
+.tabs__button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+.tabs__button-list {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tabs__button-item {
+  display: block;
+  margin-right: 3rem;
+}
+
+.tabs__button-item:last-child {
+  margin-right: 0;
+}
+
+.tabs__button {
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background-color: transparent;
+  border: 0;
+  color: #2f2f33;
+  cursor: pointer;
+}
+
+.tabs__button.is-active {
+  color: #053b93;
+}
+
+.tabs__button-quantity {
+  margin-left: 0.35rem;
+  color: #57575a;
+}
+
+.tabs__details-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
