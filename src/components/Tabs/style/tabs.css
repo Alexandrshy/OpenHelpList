@@ -14,11 +14,11 @@
 
 .tabs__button-item {
   display: block;
-  margin-right: 3rem;
+  padding-right: 3rem;
 }
 
 .tabs__button-item:last-child {
-  margin-right: 0;
+  padding-right: 0;
 }
 
 .tabs__button {
@@ -49,4 +49,31 @@
   background-image: url("../../../img/dot.svg");
   background-repeat: repeat-x;
   background-position: 0 0;
+}
+
+@media (max-width: 768px) {
+  .tabs__button-wrapper {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+
+  .tabs__button-wrapper .button {
+    display: none;
+  }
+
+  .tabs__button-list {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .tabs__button-item {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 2rem;
+  }
+
+  .tabs__button {
+    margin: 0 auto;
+    font-size: 1.25rem;
+  }
 }

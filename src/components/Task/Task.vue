@@ -58,7 +58,7 @@ export default {
           projectissue: "https://github.com/GoogleChrome/puppeteer/issues/3761",
           title: "Modify README.md",
           description:
-            "Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md",
+            "<p>Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md</p>",
           language: "JavaScript",
           level: "junior",
           completed: false
