@@ -1,5 +1,6 @@
 @import "button.css";
 @import "grid.css";
+@import "../home/index.css";
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 
 html,
@@ -44,7 +45,7 @@ h1,
 .h1 {
   position: relative;
   margin: 0 0 2.25rem;
-  padding-bottom: 1.35rem;
+  padding-bottom: 1rem;
   font-size: 4.5rem;
   font-weight: 700;
   line-height: 1.25;

@@ -9,22 +9,35 @@
             </div>
             <div class="task__desc-part">
               <div class="task__item-header">
-                <a
-                  class="task__header-link task__project-title"
-                  href="`${task.projectLink}`"
-                >{{task.project}}</a>
-                <a
-                  class="task__header-link task__author"
-                  href="`${task.authorLink}`"
-                >{{task.author}}</a>
+                <div class="task__content-meta">
+                  <div class="task__content-meta-part">
+                    <span class="task__content-meta-title">Project</span>
+                    <a
+                      class="task__content-meta-link task__project-title"
+                      href="`${task.projectLink}`"
+                    >{{task.project}}</a>
+                  </div>
+                  <div class="task__content-meta-part">
+                    <span class="task__content-meta-title">Author</span>
+                    <a
+                      class="task__content-meta-link task__author"
+                      href="`${task.authorLink}`"
+                    >{{task.author}}</a>
+                  </div>
+                </div>
               </div>
               <div class="task__item-main">
                 <h3 class="task__title">{{task.title}}</h3>
                 <div class="task__description" v-html="task.description"></div>
               </div>
               <div class="task__item-footer">
-                <a :href="task.projectissue" class="task__item-footer-link">Start working</a>
-                <a href="#" class="task__item-footer-link">Tweet</a>
+                <div class="task__item-social-item">
+                  <a :href="task.projectissue" class="task__item-social-link">Start working</a>
+                </div>
+                <div class="task__item-social-item">
+                  <span class="task__item-social-title">Share:</span>
+                  <a href="#" class="task__item-social-link">Tweet</a>
+                </div>
               </div>
             </div>
           </li>

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import TitleProject from "../TitleProject/TitleProject.vue";
-import Task from "../Task/Task.vue";
+import TitleProject from "@/components/TitleProject/TitleProject.vue";
+import Task from "@/components/Task/Task.vue";
 export default {
   components: {
     titleProject: TitleProject,
@@ -22,7 +22,3 @@ export default {
   }
 };
 </script>
-
-<style>
-@import "../../style/home/index.css";
-</style>
