@@ -1,0 +1,30 @@
+.task-form {
+  padding: 10rem 0;
+}
+
+.task-form__wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
+.task-form__elem {
+  padding: 2.5rem 2rem;
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+}
+
+@media (max-width: 1280px) {
+  .task-form {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .task-form {
+    padding: 3rem 0;
+  }
+}

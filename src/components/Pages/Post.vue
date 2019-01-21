@@ -1,20 +1,25 @@
 <template>
   <div class="container">
     <section class="page-selector">
-      <title-project></title-project>
-      <h1 class="h1">POST TASK</h1>
-      <p
-        class="subtitle"
-      >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      <div class="page-initial-screen">
+        <title-project></title-project>
+        <h1 class="h1">Post a task</h1>
+        <p
+          class="subtitle"
+        >You have your own small side project and you need help with solving some problem? Or do you want to try yourself as a mentor and reviewer? Describe your task and we will tell everyone about it!</p>
+      </div>
+      <task-form></task-form>
     </section>
   </div>
 </template>
 
 <script>
 import TitleProject from "@/components/TitleProject/TitleProject.vue";
+import TaskForm from "@/components/TaskForm/TaskForm.vue";
 export default {
   components: {
-    titleProject: TitleProject
+    titleProject: TitleProject,
+    taskForm: TaskForm
   }
 };
 </script>

@@ -28,8 +28,8 @@ export default new Router({
       component: Contact
     },
     {
-      path: "/post",
-      name: "post",
+      path: "/post-a-task",
+      name: "post-a-task",
       component: Post
     },
     {

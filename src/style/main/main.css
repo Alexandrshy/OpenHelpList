@@ -1,6 +1,5 @@
 @import "button.css";
 @import "grid.css";
-@import "../home/index.css";
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 
 html,
@@ -45,7 +44,6 @@ h1,
 .h1 {
   position: relative;
   margin: 0 0 2.25rem;
-  padding-bottom: 1rem;
   font-size: 4.5rem;
   font-weight: 700;
   line-height: 1.25;
@@ -56,7 +54,6 @@ h2,
 .h2 {
   position: relative;
   margin: 0 0 2.2rem;
-  padding-bottom: 2rem;
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.25;
@@ -73,36 +70,16 @@ h3,
   letter-spacing: -1px;
 }
 
-h1:after,
-.h1:after,
-h1:before,
-.h1:before,
-h2:after,
-.h2:after,
-h2:before,
-.h2:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  background-color: #053b93;
+.subtitle {
+  max-width: 800px;
+  margin-bottom: 3.35rem;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: #57575a;
 }
 
-h1:before,
-.h1:before {
-  left: 0;
-  width: 62px;
-  height: 5px;
-  border-radius: 5% 5% 5% 5% / 50% 50% 50% 50%;
-}
-
-h1:after,
-.h1:after {
-  position: absolute;
-  left: 65px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  border-radius: 50%;
+.subtitle:last-child {
+  margin-bottom: 0;
 }
 
 img,
@@ -114,21 +91,17 @@ svg {
   h1,
   .h1 {
     margin: 0 0 1.85rem;
-    padding-bottom: 1.1rem;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.25;
   }
-  h1:before,
-  .h1:before {
-    width: 45px;
-    height: 4px;
-  }
 
-  h1:after,
-  .h1:after {
-    left: 48px;
-    width: 4px;
-    height: 4px;
+  .title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  .subtitle {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
   }
 }
