@@ -1,0 +1,52 @@
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  border: 2px solid #2f2f33;
+  color: #2f2f33;
+  box-shadow: 0;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  max-height: 175px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.5;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f33;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #053b93;
+}
+
+input:hover::placeholder,
+textarea:hover::placeholder {
+  opacity: 0.75;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #053b93;
+}
+
+textarea {
+  resize: none;
+}
+
+label {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2f2f33;
+}

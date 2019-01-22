@@ -11,10 +11,22 @@
 }
 
 .task-form__elem {
-  padding: 2.5rem 2rem;
+  padding: 3.5rem 3rem;
   background-image: url("../../../img/dot.svg");
   background-repeat: repeat-x;
   background-position: 0 100%;
+}
+
+.task-form__item {
+  margin-bottom: 2.5rem;
+}
+
+.task-form__item:last-child {
+  margin-bottom: 0;
+}
+
+.task-form__item--button {
+  margin-top: 3.5rem;
 }
 
 @media (max-width: 1280px) {
