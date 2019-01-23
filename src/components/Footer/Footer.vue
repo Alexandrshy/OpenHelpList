@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <p class="footer__desc">
-      Made with ❤️in Russia by
+      For any questions please write
       <a
         class="footer__link"
         href="https://twitter.com/@alexandrshy"

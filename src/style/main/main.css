@@ -45,7 +45,7 @@ h1,
 .h1 {
   position: relative;
   margin: 0 0 2.25rem;
-  font-size: 4.5rem;
+  font-size: 4.75rem;
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -1px;
@@ -72,7 +72,6 @@ h3,
 }
 
 .subtitle {
-  max-width: 800px;
   margin-bottom: 3.35rem;
   font-size: 1.3rem;
   line-height: 1.55;
@@ -86,6 +85,10 @@ h3,
 img,
 svg {
   max-width: 100%;
+}
+
+.page-initial-screen {
+  max-width: 800px;
 }
 
 @media (max-width: 768px) {

@@ -29,6 +29,21 @@
   margin-top: 3.5rem;
 }
 
+.task-form__message {
+  margin-top: 0.5rem;
+  font-weight: 300;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.task-form__message.is-invalid {
+  color: #ad0505;
+}
+
+.task-form__message.is-hidden {
+  display: none;
+}
+
 @media (max-width: 1280px) {
   .task-form {
     padding: 5rem 0;

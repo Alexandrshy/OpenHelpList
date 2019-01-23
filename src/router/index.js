@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Vuelidate from "vuelidate";
 import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
 import Contact from "@/components/Pages/Contact";
@@ -8,6 +9,7 @@ import Login from "@/components/Pages/Auth/Login";
 import Registration from "@/components/Pages/Auth/Registration";
 
 Vue.use(Router);
+Vue.use(Vuelidate);
 
 export default new Router({
   mode: "history",
