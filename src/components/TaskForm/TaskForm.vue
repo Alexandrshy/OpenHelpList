@@ -1,9 +1,9 @@
 <template>
   <div class="task-form">
     <div class="task-form__wrapper">
-      <form class="task-form__elem">
+      <form class="task-form__elem" @submit.prevent="submitForm">
         <div class="task-form__item">
-          <label for="taskTitle">Task title</label>
+          <label for="taskTitle" class="required">Task title</label>
           <input
             id="taskTitle"
             type="text"
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="task-form__item">
-          <label for="taskLink">Link to task</label>
+          <label for="taskLink" class="required">Link to task</label>
           <input
             id="taskLink"
             type="text"
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="task-form__item">
-          <label for="taskDesc">Task description</label>
+          <label for="taskDesc" class="required">Task description</label>
           <textarea
             id="taskDesc"
             rows="16"
@@ -47,8 +47,8 @@
             @blur="$v.taskDesc.$touch()"
             v-model="taskDesc"
             :class="{'is-invalid': $v.taskDesc.$error}"
+            placeholder="Example: My app written on React is not fully covered by tests, you need to write tests for the form component"
           ></textarea>
-          <div class="well well-sm pre-scrollable" v-html="previewText"></div>
           <div class="task-form__message-wrapper">
             <p
               class="task-form__message"
@@ -62,16 +62,34 @@
           </div>
         </div>
         <div class="task-form__item">
-          <label for="taskLink">Link to author</label>
-          <input id="authorLink" type="text" placeholder="Example: ">
+          <span class="tag-label">Add new tag</span>
+          <vue-tags-input
+            v-model="tag"
+            :tags="tags"
+            :max-tags="5"
+            :maxlength="20"
+            :delete-on-backspace="false"
+            placeholder="Example: Frontend, React, Jest, etc."
+            @tags-changed="newTags => tags = newTags"
+          />
+          <p class="task-form__message">You can add a few tags to help with your task</p>
+        </div>
+        <div class="task-form__item">
+          <label for="authorLink">Link to author</label>
+          <input
+            id="authorLink"
+            type="text"
+            placeholder="Example: https://twitter.com/userName"
+            v-model="authorLink"
+          >
           <div class="task-form__message-wrapper">
             <p
               class="task-form__message"
-            >You can also write your email or link to social networks if you want to discuss the details with the developer</p>
+            >Also you can write your email or link to social networks if you want to discuss the details with the developer</p>
           </div>
         </div>
         <div class="task-form__item task-form__item--button">
-          <button class="button">Send</button>
+          <button class="button" type="submit">Post a task</button>
         </div>
       </form>
     </div>
@@ -80,14 +98,21 @@
 
 <script>
 import marked from "marked";
+import VueTagsInput from "@johmun/vue-tags-input";
 import { required } from "vuelidate/lib/validators";
 export default {
   name: "TaskForm",
+  components: {
+    VueTagsInput
+  },
   data() {
     return {
+      tag: "",
+      tags: [],
       taskDesc: "",
       taskTitle: "",
-      taskLink: ""
+      taskLink: "",
+      authorLink: ""
     };
   },
   validations: {
@@ -113,13 +138,36 @@ export default {
         smartLists: true,
         smartypants: false
       });
-      console.log("marked(this.taskDesc)", marked(this.taskDesc));
-      //   return marked(this.md_text);
+      return marked(this.taskDesc);
     }
+  },
+  methods: {
+    submitForm() {
+      if (this.$v.$invalid) return false;
+      const {
+        taskTitle,
+        taskLink,
+        taskDesc,
+        previewText,
+        authorLink,
+        tags
+      } = this;
+      const tagsList = tags.map(tag => tag.text);
+      console.log("Form data:", tags, {
+        taskTitle,
+        taskLink,
+        taskDesc,
+        previewText,
+        authorLink,
+        tagsList
+      });
+    },
+    useMarkdowns() {}
   }
 };
 </script>
 
 <style>
 @import "./style/taskForm.css";
+@import "./style/tags.css";
 </style>

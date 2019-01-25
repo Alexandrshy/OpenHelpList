@@ -18,7 +18,7 @@
           </button>
         </li>
       </ul>
-      <button class="button">Post task</button>
+      <button class="button">Post a task</button>
     </div>
     <ul class="tabs__details-list">
       <slot></slot>
