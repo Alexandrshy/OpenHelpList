@@ -4,8 +4,9 @@
 }
 
 .task-form .ti-new-tag-input-wrapper {
-  padding: 0;
+  padding: 0 0 0 1.25rem;
   margin: 0;
+  border-left: 2px solid #053b93;
 }
 
 .task-form .vue-tags-input .ti-input {
@@ -60,6 +61,11 @@
   margin: 0;
   padding: 0.2rem 1.25rem 0.2rem 0;
   line-height: 1;
+}
+
+.task-form .ti-tags li:first-child {
+  padding-left: 0;
+  border: 0;
 }
 
 .task-form .ti-tag:last-child {

@@ -107,6 +107,7 @@ export default {
   },
   data() {
     return {
+      resource: null,
       tag: "",
       tags: [],
       taskDesc: "",
@@ -153,16 +154,18 @@ export default {
         tags
       } = this;
       const tagsList = tags.map(tag => tag.text);
-      console.log("Form data:", tags, {
-        taskTitle,
-        taskLink,
-        taskDesc,
-        previewText,
-        authorLink,
-        tagsList
-      });
-    },
-    useMarkdowns() {}
+      this.resource
+        .save({ name: "qw3erty" })
+        .then(response => {
+          return response.json();
+        })
+        .then(newData => {
+          console.log("newData", newData);
+        });
+    }
+  },
+  created() {
+    this.resource = this.$resource("test");
   }
 };
 </script>
