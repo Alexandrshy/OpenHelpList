@@ -26,7 +26,13 @@
 }
 
 .task-form__item--button {
+  display: flex;
+  align-items: center;
   margin-top: 3.5rem;
+}
+
+.task-form__item--button .button {
+  margin-right: 4.5rem;
 }
 
 .task-form__message {
@@ -42,6 +48,10 @@
 
 .task-form__message.is-hidden {
   display: none;
+}
+
+.task-form__button {
+  min-width: 150px;
 }
 
 @media (max-width: 1280px) {

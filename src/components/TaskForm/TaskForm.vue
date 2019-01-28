@@ -89,7 +89,15 @@
           </div>
         </div>
         <div class="task-form__item task-form__item--button">
-          <button class="button" type="submit">Post a task</button>
+          <button
+            class="button task-form__button"
+            :class="{'is-invalid': this.button.error}"
+            type="submit"
+            :disabled="this.form.loading"
+          >{{button.text}}</button>
+          <p
+            class="task-form__message"
+          >Not all required fields have been filled in. Fix this and try again.</p>
         </div>
       </form>
     </div>
@@ -113,7 +121,14 @@ export default {
       taskDesc: "",
       taskTitle: "",
       taskLink: "",
-      authorLink: ""
+      authorLink: "",
+      form: {
+        loading: false
+      },
+      button: {
+        error: false,
+        text: "Post a task"
+      }
     };
   },
   validations: {
@@ -144,24 +159,45 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.$v.$invalid) return false;
-      const {
-        taskTitle,
-        taskLink,
-        taskDesc,
-        previewText,
-        authorLink,
-        tags
-      } = this;
+      this.$v.$touch();
+      if (this.$v.$invalid || this.form.loading) {
+        this.button.error = true;
+        return false;
+      }
+      this.form.loading = true;
+      this.button.text = "Please wait";
+      const { taskTitle, taskLink, taskDesc, authorLink, tags } = this;
       const tagsList = tags.map(tag => tag.text);
-      this.resource
-        .save({ name: "qw3erty" })
-        .then(response => {
-          return response.json();
-        })
-        .then(newData => {
-          console.log("newData", newData);
-        });
+      setTimeout(() => {
+        this.resource
+          .save({
+            name: {
+              taskTitle,
+              taskLink,
+              taskDesc,
+              authorLink,
+              tags,
+              tagsList
+            }
+          })
+          .then(response => {
+            return response.json();
+          })
+          .then(newData => {
+            this.cleanForm();
+            this.form.loading = false;
+            this.button.text = "Post a task";
+          });
+      }, 3000);
+    },
+    cleanForm() {
+      this.taskDesc = "";
+      this.taskTitle = "";
+      this.taskLink = "";
+      this.tag = "";
+      this.tags = [];
+      this.authorLink = "";
+      this.$v.$reset();
     }
   },
   created() {

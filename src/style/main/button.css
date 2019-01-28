@@ -31,6 +31,24 @@
   right: -2px;
 }
 
+.button.is-invalid {
+  color: #ad0505;
+}
+
+.button.is-invalid::before {
+  background-color: #ad0505;
+}
+
+.button:disabled {
+  color: #979799;
+  border-color: #979799;
+}
+
+.button:disabled::before {
+  bottom: -2px;
+  right: -2px;
+}
+
 @media (max-width: 768px) {
   .button {
     padding: 15px 30px 13px;
