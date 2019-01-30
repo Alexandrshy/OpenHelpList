@@ -73,9 +73,8 @@ h3,
 
 .subtitle {
   margin-bottom: 3.35rem;
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   line-height: 1.55;
-  color: #57575a;
 }
 
 .subtitle:last-child {
@@ -89,6 +88,20 @@ svg {
 
 .page-initial-screen {
   max-width: 800px;
+}
+
+@media (max-width: 1280px) {
+  h1,
+  .h1 {
+    margin: 0 0 2rem;
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+  .subtitle {
+    margin-bottom: 3rem;
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
 }
 
 @media (max-width: 768px) {

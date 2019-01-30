@@ -7,7 +7,7 @@
 }
 
 .page-selector {
-  padding: 4.5rem 0;
+  padding: 5rem 0 4.5rem;
 }
 
 .row {
@@ -31,7 +31,17 @@
   }
 
   .page-selector {
-    padding: 3rem 0;
+    padding: 4rem 0 3.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .page-selector {
+    padding: 2.5rem 0 2rem;
   }
 }
 

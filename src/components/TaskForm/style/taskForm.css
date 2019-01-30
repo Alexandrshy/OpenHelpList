@@ -3,18 +3,28 @@
 }
 
 .task-form__wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   background-image: url("../../../img/dot.svg");
   background-repeat: repeat-x;
   background-position: 0 0;
 }
 
-.task-form__elem {
+.task-form__box {
   padding: 3.5rem 3rem;
   background-image: url("../../../img/dot.svg");
   background-repeat: repeat-x;
   background-position: 0 100%;
+}
+
+.task-form__title {
+  margin-bottom: 3rem;
+}
+
+.task-form__title h3 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.55;
 }
 
 .task-form__item {
@@ -31,10 +41,6 @@
   margin-top: 3.5rem;
 }
 
-.task-form__item--button .button {
-  margin-right: 4.5rem;
-}
-
 .task-form__message {
   margin-top: 0.5rem;
   font-weight: 300;
@@ -46,6 +52,10 @@
   color: #ad0505;
 }
 
+.task-form__message.is-successful {
+  color: #05ad3b;
+}
+
 .task-form__message.is-hidden {
   display: none;
 }
@@ -54,9 +64,42 @@
   min-width: 150px;
 }
 
+.task-form__item--button .task-form__message {
+  width: calc(100% - 180px);
+  padding: 0 4.5rem;
+}
+
+.task-form__message.task-form__message--noIndent {
+  margin-top: 0;
+}
+
+@media (max-width: 1980px) {
+  .task-form__wrapper {
+    max-width: 1000px;
+  }
+}
+
 @media (max-width: 1280px) {
   .task-form {
     padding: 5rem 0;
+  }
+
+  .task-form__item--button .task-form__message {
+    padding: 0 4rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .task-form {
+    padding: 4rem 0;
+  }
+
+  .task-form__box {
+    padding: 3rem 0;
+  }
+
+  .task-form__item--button .task-form__message {
+    padding: 0 3rem;
   }
 }
 
