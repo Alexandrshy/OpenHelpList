@@ -7,7 +7,6 @@
         <p
           class="subtitle"
         >Want to grow as a developer and find great work? Do not wipe your pants - engage Open Source projects. So the easiest way to get into the best development teams and put yourself in the summary of this project.</p>
-        <button class="button">Help</button>
       </div>
       <task></task>
     </section>

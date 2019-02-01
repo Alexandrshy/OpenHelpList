@@ -17,7 +17,17 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: "/:id",
+          name: "task item",
+          components: {},
+          meta: {
+            showModal: true
+          }
+        }
+      ]
     },
     {
       path: "/about",

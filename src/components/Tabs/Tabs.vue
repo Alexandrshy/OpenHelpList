@@ -18,6 +18,7 @@
           </button>
         </li>
       </ul>
+      <button class="button" @click="$router.push('/post-a-task')">Post a task</button>
       <!-- <router-link class="button" to="/post-a-task" tag="button">Post a task</router-link> -->
     </div>
     <ul class="tabs__details-list">

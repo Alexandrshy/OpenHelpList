@@ -17,7 +17,10 @@
                       href="`${task.projectLink}`"
                     >{{task.project}}</a>
                   </div>
-                  <div class="task__content-meta-part">
+                  <div
+                    class="task__content-meta-part task__content-meta-part--author"
+                    v-if="task.author"
+                  >
                     <span class="task__content-meta-title">Author</span>
                     <a
                       class="task__content-meta-link task__author"
@@ -28,14 +31,18 @@
               </div>
               <div class="task__item-main">
                 <h3 class="task__title">{{task.title}}</h3>
-                <div class="task__description" v-html="task.description"></div>
-                <ul class="task__tags-list">
-                  <li class="task__tags-item" v-for="tag in task.tag" :key="tag">{{tag}}</li>
+                <div class="task__description-wrapper">
+                  <div class="task__description" v-html="cropping(task.description, 450)"></div>
+                </div>
+                <ul class="task__tags-list" v-if="task.tag && task.tag.length">
+                  <li class="task__tags-item" v-for="tag in task.tag" :key="tag">#{{tag}}</li>
                 </ul>
               </div>
               <div class="task__item-footer">
                 <div class="task__item-social-item">
+                  <span class="task__item-social-title">Link:</span>
                   <a :href="task.projectissue" class="task__item-social-link">Start working</a>
+                  <a href="#" class="task__item-social-link">More detailed</a>
                 </div>
                 <div class="task__item-social-item">
                   <span class="task__item-social-title">Share:</span>
@@ -60,7 +67,7 @@
                       href="`${task.projectLink}`"
                     >{{task.project}}</a>
                   </div>
-                  <div class="task__content-meta-part">
+                  <div class="task__content-meta-part task__content-meta-part--author">
                     <span class="task__content-meta-title">Author</span>
                     <a
                       class="task__content-meta-link task__author"
@@ -113,7 +120,7 @@ export default {
           projectissue: "https://github.com/GoogleChrome/puppeteer/issues/3761",
           title: "Modify README.md",
           description:
-            "<p>Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md</p>",
+            "<p>Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md </p>",
           language: "JavaScript",
           level: "junior",
           completed: false,
@@ -141,6 +148,9 @@ export default {
   methods: {
     setActivetab(tabName) {
       this.activeTab = tabName;
+    },
+    cropping(value, limit) {
+      return value.substring(0, limit) + "...";
     }
   }
 };

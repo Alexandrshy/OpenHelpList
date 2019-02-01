@@ -33,7 +33,9 @@
   cursor: pointer;
 }
 
-.tabs__button.is-active {
+.tabs__button.is-active,
+.tabs__button:hover,
+.tabs__button:focus {
   color: #053b93;
 }
 
