@@ -9,16 +9,16 @@
           :key="tab.name"
         >
           <button
-            @click="selectedTab(tab)"
+            @click="selectedTab(tab.name)"
             class="tabs__button"
             :class="{ 'is-active': tab.selected}"
           >
             {{tab.name}}
-            <span class="tabs__button-quantity">3</span>
+            <span class="tabs__button-quantity">{{tab.length}}</span>
           </button>
         </li>
       </ul>
-      <button class="button">Post a task</button>
+      <!-- <router-link class="button" to="/post-a-task" tag="button">Post a task</router-link> -->
     </div>
     <ul class="tabs__details-list">
       <slot></slot>
@@ -38,10 +38,8 @@ export default {
     };
   },
   methods: {
-    selectedTab(selectedTab) {
-      this.tabs.forEach(tab => {
-        tab.selected = tab.name === selectedTab.name;
-      });
+    selectedTab(tabName) {
+      this.$emit("clickTab", tabName);
     }
   }
 };

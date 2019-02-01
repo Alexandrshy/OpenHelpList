@@ -107,18 +107,25 @@ svg {
 @media (max-width: 768px) {
   h1,
   .h1 {
-    margin: 0 0 1.85rem;
-    font-size: 2.4rem;
-    font-weight: 700;
+    margin: 0 0 1.25rem;
+    font-size: 3.5rem;
     line-height: 1.25;
   }
 
-  .title {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
+  h3,
+  .h3 {
+    margin: 0 0 1rem;
   }
+
   .subtitle {
     margin-bottom: 2rem;
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1,
+  .h1 {
+    font-size: 3rem;
   }
 }

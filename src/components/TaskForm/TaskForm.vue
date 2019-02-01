@@ -102,6 +102,7 @@
             <p
               class="task-form__message task-form__message--noIndent task-form__message--status"
               :class="{'is-invalid': form.status === 'error', 'is-successful': form.status === 'successful'}"
+              v-if="form.status"
             >{{form.message}}</p>
           </div>
         </form>
@@ -168,9 +169,9 @@ export default {
     submitForm() {
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.form.status = "error";
-        this.form.message =
-          "Not all required fields have been filled in. Fix it and try again.";
+        this.reportError(
+          "Not all required fields have been filled in. Fix it and try again"
+        );
         return false;
       }
       this.form.loading = true;
@@ -189,13 +190,18 @@ export default {
               tagsList
             }
           })
-          .then(response => {
-            if (response.ok) {
+          .then(
+            response => {
               this.cleanForm();
               this.reportSuccess(15000);
-            } else {
-              this.reportError();
+            },
+            reject => {
+              this.reportError(
+                "Something went wrong, try to send the task a little later or write to me personally"
+              );
             }
+          )
+          .then(data => {
             this.form.loading = false;
             this.button.text = "Post a task";
           });
@@ -225,10 +231,9 @@ export default {
         this.form.message = "";
       }, time);
     },
-    reportError() {
+    reportError(message) {
       this.form.status = "error";
-      this.form.message =
-        "Something went wrong, try to send the task a little later or write to me personally";
+      this.form.message = message;
     }
   },
   created() {

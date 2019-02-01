@@ -4,3 +4,9 @@
   font-size: 1.25rem;
   font-weight: 300;
 }
+
+@media (max-width: 768px) {
+  .title {
+    margin-bottom: 0.85rem;
+  }
+}

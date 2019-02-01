@@ -9,7 +9,10 @@
         </ul>
         <ul class="menu__list menu__list--social">
           <li class="menu__social" v-for="link in linkSocial" :key="link.title">
-            <a href="`${link.url}`" :class="`menu__social-link menu__social-link--${link.title}`"></a>
+            <a
+              href="`${link.url}`"
+              :class="`menu__social-link menu__social-link--${link.title}`"
+            >{{link.title }}</a>
           </li>
         </ul>
       </div>
@@ -28,12 +31,10 @@ export default {
         { title: "Home", url: "/" },
         { title: "About", url: "/about" },
         { title: "Contact", url: "/contact" }
-        // { title: "Login", url: "/login" },
-        // { title: "Registration", url: "/registration" }
       ],
       linkSocial: [
-        { title: "twitter", url: "/" },
-        { title: "linkedin", url: "/" }
+        { title: "Twitter", url: "/" },
+        { title: "Linkedin", url: "/" }
       ]
     };
   }

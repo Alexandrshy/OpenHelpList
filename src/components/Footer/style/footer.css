@@ -1,21 +1,22 @@
 .footer {
-  padding: 2rem 0;
+  padding: 2rem 1.25rem;
   background-color: #242427;
   text-align: center;
 }
 
 .footer__desc {
   font-size: 0.85rem;
+  line-height: 1.5;
   color: #81827e;
 }
 
 .footer__link {
   display: inline-block;
   color: #81827e;
-  border-bottom: 1px solid;
 }
 
-.footer__link:hover,
-.footer__link:focus {
-  border-bottom-color: transparent;
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 1.25rem;
+  }
 }

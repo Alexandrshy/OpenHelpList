@@ -13,6 +13,9 @@ export default {
     },
     selected: {
       default: false
+    },
+    length: {
+      default: 0
     }
   }
 };

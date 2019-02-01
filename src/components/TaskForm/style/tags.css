@@ -80,3 +80,24 @@
   margin-left: 5px;
   font-size: 1.25rem;
 }
+
+@media (max-width: 768px) {
+  .task-form .vue-tags-input .ti-input {
+    min-height: 55px;
+    padding: 0.5rem 1rem;
+  }
+
+  .task-form .ti-new-tag-input-wrapper {
+    padding: 0 0 0 1rem;
+  }
+
+  .task-form .ti-tag {
+    padding: 0.2rem 1rem 0.2rem 0;
+    font-size: 1rem;
+  }
+
+  .task-form .ti-tag .ti-actions {
+    margin-bottom: 2px;
+    font-size: 1rem;
+  }
+}
