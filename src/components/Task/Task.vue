@@ -2,8 +2,8 @@
   <div class="task">
     <div class="task__wrapper">
       <tabs v-on:clickTab="setActivetab">
-        <tab name="Open task" :length="tasks.length" :selected="activeTab === 'Open task'">
-          <li class="task__item" v-for="task in tasks" :key="task.id">
+        <tab name="Open task" :length="openTasksLength" :selected="activeTab === 'Open task'">
+          <li :id="`task-${task.id}`" class="task__item" v-for="task in openTasks" :key="task.id">
             <div class="task__logo-part">
               <img class="task__logo" :src="`${task.projectLogo}`" :alt="`${task.project} logo`">
             </div>
@@ -42,7 +42,10 @@
                 <div class="task__item-social-item">
                   <span class="task__item-social-title">Link:</span>
                   <a :href="task.projectissue" class="task__item-social-link">Start working</a>
-                  <a href="#" class="task__item-social-link">More detailed</a>
+                  <router-link
+                    class="link task__item-social-link"
+                    :to="{name: 'Task item', params: {id: task.id}}"
+                  >More detailed</router-link>
                 </div>
                 <div class="task__item-social-item">
                   <span class="task__item-social-title">Share:</span>
@@ -52,8 +55,12 @@
             </div>
           </li>
         </tab>
-        <tab name="Closed task" :length="tasks.length" :selected="activeTab === 'Closed task'">
-          <li class="task__item" v-for="task in tasks" :key="task.id">
+        <tab
+          name="Closed task"
+          :length="completeTasksLength"
+          :selected="activeTab === 'Closed task'"
+        >
+          <li class="task__item" v-for="task in completeTasks" :key="task.id">
             <div class="task__logo-part">
               <img class="task__logo" :src="`${task.projectLogo}`" :alt="`${task.project} logo`">
             </div>
@@ -108,42 +115,22 @@ export default {
   },
   data() {
     return {
-      tasks: [
-        {
-          id: 1,
-          author: "Alex Shu",
-          authorLink: "https://github.com/Alexandrshy",
-          project: "OpenHelpList",
-          projectLink: "https://github.com/Alexandrshy/OpenHelpList",
-          projectLogo:
-            "https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png",
-          projectissue: "https://github.com/GoogleChrome/puppeteer/issues/3761",
-          title: "Modify README.md",
-          description:
-            "<p>Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md Modify README.md </p>",
-          language: "JavaScript",
-          level: "junior",
-          completed: false,
-          tag: ["JavaScript", "React", "Redux", "Jest"]
-        },
-        {
-          id: 2,
-          author: "Alex Shu",
-          authorLink: "https://github.com/Alexandrshy",
-          project: "OpenHelpList",
-          projectLink: "https://github.com/Alexandrshy/OpenHelpList",
-          projectLogo:
-            "https://user-images.githubusercontent.com/10379601/29446482-04f7036a-841f-11e7-9872-91d1fc2ea683.png",
-          title: "Make the first commit",
-          description:
-            "<p>Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit</p> <p>Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit Make the <a href='#'>first</a> commit Make the first commit Make the first commit Make the first commit Make the first commit Make the first commit</p>",
-          language: "JavaScript",
-          level: "junior",
-          completed: true
-        }
-      ],
       activeTab: "Open task"
     };
+  },
+  computed: {
+    completeTasks() {
+      return this.$store.getters.completeTasks;
+    },
+    completeTasksLength() {
+      return this.$store.getters.completeTasksLength;
+    },
+    openTasks() {
+      return this.$store.getters.openTasks;
+    },
+    openTasksLength() {
+      return this.$store.getters.openTasksLength;
+    }
   },
   methods: {
     setActivetab(tabName) {

@@ -10,16 +10,31 @@
       </div>
       <task></task>
     </section>
+    <modal v-if="showModal" ref="modal">
+      <router-view name="task"/>
+    </modal>
   </div>
 </template>
 
 <script>
 import TitleProject from "@/components/TitleProject/TitleProject.vue";
 import Task from "@/components/Task/Task.vue";
+import Modal from "@/components/Modal/Modal.vue";
 export default {
   components: {
     titleProject: TitleProject,
-    task: Task
+    task: Task,
+    modal: Modal
+  },
+  data() {
+    return {
+      showModal: this.$route.meta.showModal
+    };
+  },
+  watch: {
+    "$route.meta"({ showModal }) {
+      this.showModal = showModal;
+    }
   }
 };
 </script>

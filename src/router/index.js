@@ -7,6 +7,7 @@ import Contact from "@/components/Pages/Contact";
 import Post from "@/components/Pages/Post";
 import Login from "@/components/Pages/Auth/Login";
 import Registration from "@/components/Pages/Auth/Registration";
+import TaskModal from "@/components/Task/TaskModal";
 
 Vue.use(Router);
 Vue.use(Vuelidate);
@@ -20,9 +21,12 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: "/:id",
-          name: "task item",
-          components: {},
+          path: "tasks/:id",
+          name: "Task item",
+          components: {
+            task: TaskModal
+          },
+          props: { task: true },
           meta: {
             showModal: true
           }
@@ -55,9 +59,13 @@ export default new Router({
       component: Registration
     }
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior: (to, from, savedPosition) => {
     if (savedPosition) {
       return savedPosition;
+    } else if (to.name === "Task item") {
+      return {
+        selector: `task-${to.params.id}`
+      };
     } else {
       return { x: 0, y: 0 };
     }

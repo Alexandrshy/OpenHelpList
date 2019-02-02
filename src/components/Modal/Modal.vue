@@ -3,7 +3,8 @@
     <div class="modal">
       <div class="inner">
         <button class="close-button" @click="handleClose">
-          <close-icon/>
+          <!-- <close-icon/> -->
+          <p>12312</p>
         </button>
         <slot></slot>
       </div>
@@ -13,12 +14,12 @@
 
 <script>
 import { TweenMax, Power4 } from "gsap";
-import CloseIcon from "./icons/Close.vue";
+// import CloseIcon from "./icons/Close.vue";
 export default {
   name: "modal",
-  components: {
-    CloseIcon
-  },
+  //   components: {
+  //     CloseIcon
+  //   },
   methods: {
     enter(el, done) {
       TweenMax.fromTo(
