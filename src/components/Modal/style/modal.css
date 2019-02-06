@@ -1,0 +1,60 @@
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.modal__overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: 100%;
+}
+
+.modal__wrapper {
+  position: relative;
+  margin: 120px auto;
+  padding: 0 20px;
+  max-width: 1040px;
+}
+
+.modal__content {
+  padding: 4rem 7rem 5rem;
+  border: 10px solid #053b93;
+  background-color: #fff;
+}
+
+.modal__close {
+  position: absolute;
+  top: -50px;
+  right: -30px;
+  overflow: hidden;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.414 7l4.793 4.793a1 1 0 0 1-1.414 1.414L7 8.414l-4.793 4.793a1 1 0 0 1-1.414-1.414L5.586 7 .793 2.207A1 1 0 0 1 2.207.793L7 5.586 11.793.793a1 1 0 0 1 1.414 1.414L8.414 7z' fill='%23FFF' fill-rule='evenodd'/%3E%3C/svg%3E")
+    50% 50% no-repeat;
+  background-size: 24px;
+}
+
+@media (max-width: 992px) {
+}

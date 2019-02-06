@@ -1,12 +1,14 @@
 <template>
   <transition v-bind:css="false" v-on:enter="enter" v-on:leave="leave" appear>
     <div class="modal">
-      <div class="inner">
-        <button class="close-button" @click="handleClose">
-          <!-- <close-icon/> -->
-          <p>12312</p>
-        </button>
-        <slot></slot>
+      <div class="modal__overlay is-visible" @click="handleClose"></div>
+      <div class="modal__container">
+        <div class="modal__wrapper">
+          <button class="modal__close" @click="handleClose"></button>
+          <div class="modal__content">
+            <slot></slot>
+          </div>
+        </div>
       </div>
     </div>
   </transition>
@@ -14,12 +16,14 @@
 
 <script>
 import { TweenMax, Power4 } from "gsap";
-// import CloseIcon from "./icons/Close.vue";
 export default {
   name: "modal",
-  //   components: {
-  //     CloseIcon
-  //   },
+  created() {
+    document.documentElement.className = "is-modal-visible";
+  },
+  destroyed() {
+    document.documentElement.className = "";
+  },
   methods: {
     enter(el, done) {
       TweenMax.fromTo(
@@ -42,6 +46,7 @@ export default {
       });
     },
     handleClose() {
+      console.log(this.$router);
       this.$router.go(-1);
     }
   }
@@ -49,35 +54,5 @@ export default {
 </script>
 
 <style>
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: fade-out(black, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inner {
-  background-color: white;
-  width: 800px;
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: -40px;
-  right: 0;
-  border: 0;
-  height: 40px;
-  width: 40px;
-  background-color: darken(white, 5%);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@import "./style/modal.css";
 </style>

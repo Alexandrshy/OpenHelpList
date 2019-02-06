@@ -28,6 +28,7 @@ export default {
   methods: {
     switchMenu() {
       this.isMenuShow = !this.isMenuShow;
+      console.log("this.$route.meta.showModal", this.$route.meta.showModal);
     },
     closeMenu() {
       this.isMenuShow = false;

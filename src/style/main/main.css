@@ -7,6 +7,16 @@ html,
 body {
   font-family: "Poppins", sans-serif;
   color: #2f2f33;
+  overflow-x: hidden;
+}
+
+html.is-modal-visible {
+  overflow-y: hidden;
+  padding-right: 0px;
+}
+
+html.is-modal-visible .burger-menu {
+  z-index: -1;
 }
 
 * {
