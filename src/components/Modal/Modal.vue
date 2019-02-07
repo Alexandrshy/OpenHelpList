@@ -1,8 +1,8 @@
 <template>
   <transition v-bind:css="false" v-on:enter="enter" v-on:leave="leave" appear>
     <div class="modal">
-      <div class="modal__overlay is-visible" @click="handleClose"></div>
       <div class="modal__container">
+        <div class="modal__overlay is-visible" @click="handleClose"></div>
         <div class="modal__wrapper">
           <button class="modal__close" @click="handleClose"></button>
           <div class="modal__content">

@@ -65,17 +65,19 @@
 
   .tabs__button-list {
     flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
+    max-width: 320px;
   }
 
   .tabs__button-item {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    padding-right: 2rem;
+    padding-right: 1rem;
   }
 
   .tabs__button {
     margin: 0 auto;
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }

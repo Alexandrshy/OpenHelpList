@@ -50,9 +50,6 @@ export default {
   methods: {
     setActivetab(tabName) {
       this.activeTab = tabName;
-    },
-    cropping(value, limit) {
-      return value.substring(0, limit) + "...";
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <li id="`task-${task.id}`" class="task__item">
+  <li :id="`task-${task.id}`" class="task__item">
     <div class="task__logo-part">
       <img class="task__logo" :src="`${task.projectLogo}`" :alt="`${task.project} logo`">
     </div>
@@ -25,7 +25,7 @@
       <div class="task__item-main">
         <h3 class="task__title">{{task.title}}</h3>
         <div class="task__description-wrapper">
-          <div class="task__description description" v-html="task.description"></div>
+          <div class="task__description description" v-html="previewText(task.description)"></div>
         </div>
         <ul class="tags-list" v-if="task.tag && task.tag.length">
           <li class="tags-item" v-for="tag in task.tag" :key="tag">#{{tag}}</li>
@@ -53,8 +53,19 @@
 </template>
 
 <script>
+import marked from "marked";
 export default {
   name: "taskItem",
-  props: ["task"]
+  props: ["task"],
+  methods: {
+    previewText(text) {
+      marked.setOptions({
+        smartLists: true,
+        smartypants: false
+      });
+
+      return marked(text);
+    }
+  }
 };
 </script>
