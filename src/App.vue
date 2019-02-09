@@ -2,7 +2,9 @@
   <div id="app">
     <custom-header></custom-header>
     <menu-burger :isMenuShow="isMenuShow" :switchMenu="switchMenu"></menu-burger>
-    <router-view></router-view>
+    <main class="main">
+      <router-view></router-view>
+    </main>
     <custom-menu :isMenuShow="isMenuShow" :closeMenu="closeMenu"></custom-menu>
     <custom-footer></custom-footer>
   </div>
@@ -28,10 +30,14 @@ export default {
   methods: {
     switchMenu() {
       this.isMenuShow = !this.isMenuShow;
-      console.log("this.$route.meta.showModal", this.$route.meta.showModal);
     },
     closeMenu() {
       this.isMenuShow = false;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      this.$store.dispatch("setLocation", from);
     }
   }
 };

@@ -53,24 +53,28 @@
   cursor: pointer;
   background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.414 7l4.793 4.793a1 1 0 0 1-1.414 1.414L7 8.414l-4.793 4.793a1 1 0 0 1-1.414-1.414L5.586 7 .793 2.207A1 1 0 0 1 2.207.793L7 5.586 11.793.793a1 1 0 0 1 1.414 1.414L8.414 7z' fill='%23FFF' fill-rule='evenodd'/%3E%3C/svg%3E")
     50% 50% no-repeat;
-  background-size: 24px;
+  background-size: 30px;
 }
 
+.modal__error {
+  text-align: center;
+  margin-bottom: 0;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1200px) {
+  .modal__wrapper {
+    max-width: 865px;
+  }
+}
 @media (max-width: 992px) {
   .modal__wrapper {
-    max-width: 700px;
+    max-width: 640px;
     margin: 80px auto;
   }
 
   .modal__content {
     padding: 4rem 5rem 5rem;
-  }
-
-  .modal__close {
-    width: 30px;
-    height: 30px;
-    top: -30px;
-    right: -10px;
   }
 }
 

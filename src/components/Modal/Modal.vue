@@ -6,7 +6,8 @@
         <div class="modal__wrapper">
           <button class="modal__close" @click="handleClose"></button>
           <div class="modal__content">
-            <slot></slot>
+            <slot v-if="existenceTask"></slot>
+            <h2 class="modal__error" v-else>Unfortunately, there is no such task ...</h2>
           </div>
         </div>
       </div>
@@ -23,6 +24,13 @@ export default {
   },
   destroyed() {
     document.documentElement.className = "";
+  },
+  data() {
+    return {
+      existenceTask: Boolean(
+        this.$store.getters.taskById(this.$route.params.id)
+      )
+    };
   },
   methods: {
     enter(el, done) {
@@ -46,8 +54,11 @@ export default {
       });
     },
     handleClose() {
-      console.log(this.$router);
-      this.$router.go(-1);
+      if (this.$store.getters.getLocation) {
+        this.$router.go(-1);
+      } else {
+        this.$router.push("/");
+      }
     }
   }
 };

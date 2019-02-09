@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Vuelidate from "vuelidate";
+import ErrorPage from "@/components/Pages/Error";
 import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
 import Contact from "@/components/Pages/Contact";
@@ -57,6 +58,14 @@ export default new Router({
       path: "/registration",
       name: "registration",
       component: Registration
+    },
+    {
+      path: "/tasks",
+      redirect: "/"
+    },
+    {
+      path: "*",
+      component: ErrorPage
     }
   ],
   scrollBehavior: (to, from, savedPosition) => {
