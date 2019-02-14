@@ -7,7 +7,7 @@
           <button class="modal__close" @click="handleClose"></button>
           <div class="modal__content">
             <slot v-if="existenceTask"></slot>
-            <h2 class="modal__error" v-else>Unfortunately, there is no such task ...</h2>
+            <h2 class="modal__error" v-else>Unfortunately, there is no such task...</h2>
           </div>
         </div>
       </div>

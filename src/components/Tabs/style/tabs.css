@@ -53,6 +53,13 @@
   background-position: 0 0;
 }
 
+.tabs__details-item {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100%;
+  margin: 0 -2rem;
+}
+
 @media (max-width: 768px) {
   .tabs__button-wrapper {
     flex-wrap: wrap;
@@ -79,5 +86,9 @@
   .tabs__button {
     margin: 0 auto;
     font-size: 1rem;
+  }
+
+  .tabs__details-item {
+    margin: 0 -1.25rem;
   }
 }

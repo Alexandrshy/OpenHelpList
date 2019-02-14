@@ -15,6 +15,11 @@
   color: #81827e;
 }
 
+.footer__link:hover,
+.footer__link:focus {
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 1.5rem 1.25rem;
