@@ -39,6 +39,11 @@ export default {
     $route(to, from) {
       this.$store.dispatch("setLocation", from);
     }
+  },
+  computed: {
+    isUserLoggedIn() {
+      return this.$store.getters.isUserLoggedIn;
+    }
   }
 };
 </script>

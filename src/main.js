@@ -5,6 +5,8 @@ import App from "./App";
 import router from "./router";
 import store from "./store";
 import VueResource from "vue-resource";
+import * as fb from "firebase";
+import CONFIG from "./config";
 
 Vue.config.productionTip = false;
 
@@ -17,5 +19,14 @@ new Vue({
   router,
   store,
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
+  created() {
+    fb.initializeApp(CONFIG);
+    fb.auth().onAuthStateChanged(user => {
+      console.log("user1", user);
+      if (user) {
+        this.$store.dispatch("autoLogInUser", user);
+      }
+    });
+  }
 });

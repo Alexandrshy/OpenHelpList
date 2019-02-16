@@ -112,7 +112,6 @@
 </template>
 
 <script>
-import marked from "marked";
 import VueTagsInput from "@johmun/vue-tags-input";
 import { required } from "vuelidate/lib/validators";
 export default {
@@ -150,21 +149,6 @@ export default {
       required
     }
   },
-  computed: {
-    previewText() {
-      marked.setOptions({
-        renderer: new marked.Renderer(),
-        gfm: true,
-        tables: true,
-        breaks: true,
-        pedantic: false,
-        sanitize: true,
-        smartLists: true,
-        smartypants: false
-      });
-      return marked(this.taskDesc);
-    }
-  },
   methods: {
     submitForm() {
       this.$v.$touch();
@@ -178,34 +162,15 @@ export default {
       this.button.text = "Please wait";
       const { taskTitle, taskLink, taskDesc, authorLink, tags } = this;
       const tagsList = tags.map(tag => tag.text);
-      setTimeout(() => {
-        this.resource
-          .save({
-            name: {
-              taskTitle,
-              taskLink,
-              taskDesc,
-              authorLink,
-              tags,
-              tagsList
-            }
-          })
-          .then(
-            response => {
-              this.cleanForm();
-              this.reportSuccess(15000);
-            },
-            reject => {
-              this.reportError(
-                "Something went wrong, try to send the task a little later or write to me personally"
-              );
-            }
-          )
-          .then(data => {
-            this.form.loading = false;
-            this.button.text = "Post a task";
-          });
-      }, 3000);
+
+      this.$store.dispatch("addTask", {
+        taskTitle,
+        taskLink,
+        taskDesc,
+        authorLink,
+        tags,
+        tagsList
+      });
     },
     changeForm() {
       if (this.form.message && !this.$v.$invalid) {
