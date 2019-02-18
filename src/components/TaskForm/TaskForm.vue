@@ -97,13 +97,13 @@
             <button
               class="button task-form__button"
               type="submit"
-              :disabled="this.form.loading"
+              :disabled="loading"
             >{{button.text}}</button>
             <p
               class="task-form__message task-form__message--noIndent task-form__message--status"
-              :class="{'is-invalid': form.status === 'error', 'is-successful': form.status === 'successful'}"
-              v-if="form.status"
-            >{{form.message}}</p>
+              :class="{'is-invalid': status === 'error', 'is-successful': status === 'successful'}"
+              v-if="status"
+            >{{message}}</p>
           </div>
         </form>
       </div>
@@ -121,18 +121,12 @@ export default {
   },
   data() {
     return {
-      resource: null,
       tag: "",
       tags: [],
       taskDesc: "",
       taskTitle: "",
       taskLink: "",
       authorLink: "",
-      form: {
-        loading: false,
-        status: "",
-        message: ""
-      },
       button: {
         text: "Post a task"
       }
@@ -153,29 +147,34 @@ export default {
     submitForm() {
       this.$v.$touch();
       if (this.$v.$invalid) {
-        this.reportError(
-          "Not all required fields have been filled in. Fix it and try again"
-        );
+        this.$store.dispatch("setMessage", {
+          status: "error",
+          message:
+            "Not all required fields have been filled in. Fix it and try again"
+        });
         return false;
       }
-      this.form.loading = true;
       this.button.text = "Please wait";
+
       const { taskTitle, taskLink, taskDesc, authorLink, tags } = this;
       const tagsList = tags.map(tag => tag.text);
-
-      this.$store.dispatch("addTask", {
-        taskTitle,
-        taskLink,
-        taskDesc,
-        authorLink,
-        tags,
-        tagsList
-      });
+      this.$store
+        .dispatch("addTask", {
+          taskTitle,
+          taskLink,
+          taskDesc,
+          authorLink,
+          tags,
+          tagsList
+        })
+        .then(() => {
+          this.cleanForm();
+          this.reportSuccess(15000);
+        });
     },
     changeForm() {
-      if (this.form.message && !this.$v.$invalid) {
-        this.form.message = "";
-        this.form.error = "";
+      if (this.message && !this.$v.$invalid) {
+        this.$store.dispatch("clearMessage");
       }
     },
     cleanForm() {
@@ -188,21 +187,26 @@ export default {
       this.$v.$reset();
     },
     reportSuccess(time) {
-      this.form.status = "successful";
-      this.form.message =
-        "Thank You! Your task is saved and very soon it will appear on the list";
+      this.$store.dispatch("setMessage", {
+        status: "successful",
+        message:
+          "Thank You! Your task is saved and very soon it will appear on the list"
+      });
       setTimeout(() => {
-        this.form.status = "";
-        this.form.message = "";
+        this.$store.dispatch("clearMessage");
       }, time);
-    },
-    reportError(message) {
-      this.form.status = "error";
-      this.form.message = message;
     }
   },
-  created() {
-    this.resource = this.$resource("test");
+  computed: {
+    loading() {
+      return this.$store.loading;
+    },
+    message() {
+      return this.$store.getters.message;
+    },
+    status() {
+      return this.$store.getters.status;
+    }
   }
 };
 </script>

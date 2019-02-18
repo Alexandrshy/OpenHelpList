@@ -1,3 +1,29 @@
+import * as fb from "firebase";
+
+class Task {
+  constructor(
+    taskTitle,
+    taskLink,
+    taskDesc,
+    tagsList,
+    authorLink,
+    authorID = "1111222",
+    project = "test",
+    projectLink = "teslink",
+    active = false
+  ) {
+    this.title = taskTitle;
+    this.link = taskLink;
+    this.description = taskDesc;
+    this.tags = tagsList;
+    this.authorLink = authorLink;
+    this.author = authorID;
+    this.project = project;
+    this.projectLink = projectLink;
+    this.active = active;
+  }
+}
+
 export default {
   state: {
     tasks: [
@@ -21,42 +47,38 @@ export default {
   },
   mutations: {
     addTask(state, payload) {
-      console.log("payload", payload);
       state.tasks.push(payload);
     }
   },
   actions: {
-    addTask({ commit }, payload) {
-      setTimeout(() => {
-        this.resource
-          .save({
-            name: {
-              taskTitle,
-              taskLink,
-              taskDesc,
-              authorLink,
-              tags,
-              tagsList
-            }
-          })
-          .then(
-            response => {
-              console.log("response", response);
-              commit("addTask", response);
-              this.cleanForm();
-              this.reportSuccess(15000);
-            },
-            reject => {
-              this.reportError(
-                "Something went wrong, try to send the task a little later or write to me personally"
-              );
-            }
-          )
-          .then(data => {
-            this.form.loading = false;
-            this.button.text = "Post a task";
+    async addTask({ commit, getters }, payload) {
+      commit("clearMessage");
+      commit("setLoading", true);
+
+      try {
+        const authorID = getters.user.id;
+        const { taskTitle, taskLink, taskDesc, tagsList, authorLink } = payload;
+        const newTask = new Task(
+          taskTitle,
+          taskLink,
+          taskDesc,
+          tagsList,
+          authorLink,
+          authorID
+        );
+        fb.database()
+          .ref("task")
+          .push(newTask)
+          .then(() => {
+            commit("setLoading", false);
           });
-      }, 3000);
+      } catch (error) {
+        commit("setMessage", {
+          status: "error",
+          message: error.message
+        });
+        commit("setLoading", false);
+      }
     }
   },
   getters: {

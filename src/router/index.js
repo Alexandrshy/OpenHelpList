@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Vuelidate from "vuelidate";
+import AuthGuard from "./auth-guard";
 import ErrorPage from "@/components/Pages/Error";
 import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
@@ -48,6 +49,7 @@ export default new Router({
       path: "/post-a-task",
       name: "post-a-task",
       component: Post
+      // beforeEnter: AuthGuard
     },
     {
       path: "/login",

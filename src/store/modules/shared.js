@@ -12,18 +12,15 @@ export default {
     setBtnLoadingStatus(state, payload) {
       state.btnLoadingStatus = payload;
     },
-    setMessage(state, payload) {
-      state.message = payload;
-    },
     setStatus(state, payload) {
       state.status = payload;
     },
-    setError(state, payload) {
-      console.log("payload", payload);
+    setMessage(state, payload) {
       state.status = payload.status;
       state.message = payload.message;
     },
     clearMessage(state) {
+      state.status = "";
       state.message = "";
     }
   },
@@ -34,14 +31,11 @@ export default {
     setBtnLoadingStatus({ commit }, payload) {
       commit("setBtnLoadingStatus", payload);
     },
-    setMessage({ commit }, payload) {
-      commit("setMessage", payload);
-    },
     setStatus({ commit }, payload) {
       commit("setStatus", payload);
     },
-    setError({ commit }, payload) {
-      commit("setError", payload);
+    setMessage({ commit }, payload) {
+      commit("setMessage", payload);
     },
     clearMessage({ commit }) {
       commit("clearMessage");

@@ -32,7 +32,7 @@ export default {
           });
       } catch (error) {
         commit("setLoading", false);
-        commit("setError", {
+        commit("setMessage", {
           status: "error",
           message: error.message
         });
@@ -54,7 +54,7 @@ export default {
           });
       } catch (error) {
         commit("setLoading", false);
-        commit("setError", {
+        commit("setMessage", {
           status: "error",
           message:
             error.code === "auth/account-exists-with-different-credential"
@@ -72,7 +72,7 @@ export default {
             commit("setUser", "");
           });
       } catch (error) {
-        commit("setError", {
+        commit("setMessage", {
           status: "error",
           message: error.message
         });
