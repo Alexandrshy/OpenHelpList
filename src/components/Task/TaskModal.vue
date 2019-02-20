@@ -67,5 +67,5 @@ export default {
 <style>
 @import "./style/taskModal.css";
 @import "./style/description.css";
-@import "./style/index.css";
+@import "./style/indexItem.css";
 </style>

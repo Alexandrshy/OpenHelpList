@@ -81,6 +81,12 @@
   font-size: 1.25rem;
 }
 
+@media (max-width: 992px) {
+  .task-form .ti-tag {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .task-form .vue-tags-input .ti-input {
     min-height: 55px;

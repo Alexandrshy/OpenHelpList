@@ -1,5 +1,5 @@
 <template>
-  <li :id="`task-${task.id}`" class="task__item" :style="{order: index}">
+  <div :id="`task-${task.id}`" class="task__item" :style="{order: index}">
     <section class="task__item-wrapper">
       <task-logo :img="task.projectLogo" :alt="task.project"></task-logo>
       <div class="task__desc-part">
@@ -33,7 +33,7 @@
             <li class="tags-item" v-for="tag in task.tag" :key="tag">#{{tag}}</li>
           </ul>
         </div>
-        <div class="task__item-footer social-link">
+        <div class="task__item-footer social-link" v-if="!preview">
           <div class="task__item-social-item social-link__wrapper">
             <span class="task__item-social-title social-link__title">Link:</span>
             <a
@@ -52,7 +52,7 @@
         </div>
       </div>
     </section>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -63,7 +63,19 @@ export default {
     taskLogo: TaskLogo
   },
   name: "taskItem",
-  props: ["task", "index"],
+  props: {
+    index: {
+      default: "1",
+      type: String
+    },
+    task: {
+      type: Object
+    },
+    preview: {
+      default: false,
+      type: Boolean
+    }
+  },
   methods: {
     previewText(text) {
       marked.setOptions({
@@ -76,3 +88,10 @@ export default {
   }
 };
 </script>
+
+<style>
+@import "./style/taskItem.css";
+@import "./style/description.css";
+@import "./style/indexItem.css";
+</style>
+ 

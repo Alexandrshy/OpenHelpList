@@ -2,24 +2,30 @@ import * as fb from "firebase";
 
 class Task {
   constructor(
+    id,
     taskTitle,
     taskLink,
     taskDesc,
     tagsList,
     authorLink,
-    authorID = "1111222",
+    authorID,
+    publicationDate,
     project = "test",
     projectLink = "teslink",
+    projectLogo = "",
     active = false
   ) {
+    this.id = id;
     this.title = taskTitle;
     this.link = taskLink;
     this.description = taskDesc;
     this.tags = tagsList;
     this.authorLink = authorLink;
     this.author = authorID;
+    this.publicationDate = publicationDate;
     this.project = project;
     this.projectLink = projectLink;
+    this.projectLogo = projectLogo;
     this.active = active;
   }
 }
@@ -57,18 +63,31 @@ export default {
 
       try {
         const authorID = getters.user.id;
-        const { taskTitle, taskLink, taskDesc, tagsList, authorLink } = payload;
+        const {
+          taskTitle,
+          taskLink,
+          taskDesc,
+          tagsList,
+          authorLink,
+          projectTitle,
+          projectLink
+        } = payload;
+        const publicationDate = Date.now();
         const newTask = new Task(
           taskTitle,
           taskLink,
           taskDesc,
           tagsList,
           authorLink,
-          authorID
+          authorID,
+          publicationDate,
+          projectTitle,
+          projectLink
         );
-        fb.database()
+        const task = await fb
+          .database()
           .ref("task")
-          .push(newTask)
+          .push({ id: task.key, ...newTask })
           .then(() => {
             commit("setLoading", false);
           });

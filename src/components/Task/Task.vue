@@ -4,7 +4,7 @@
       <tabs v-on:clickTab="setActivetab">
         <tab name="Open task" :length="openTasksLength" :selected="activeTab === 'Open task'">
           <task-item v-for="(task, index) in openTasks" :key="task.id" :task="task" :index="index"></task-item>
-          <li
+          <div
             class="task__item task__item--additional"
             style="order: 2;"
             v-if="openTasksLength > 2"
@@ -21,8 +21,8 @@
                 <router-link class="button task__button" to="/post-a-task">Post a task</router-link>
               </div>
             </section>
-          </li>
-          <li
+          </div>
+          <div
             class="task__item task__item--additional"
             style="order: 5;"
             v-if="openTasksLength > 4"
@@ -37,7 +37,7 @@
                 >It's very simple, take any open task. If you are interested in the task - take it and do it! Tasks are not "booked" for developers, anyone can offer their solution. Even if someone makes the task faster than you, do not stop - your solution may be better. This is Open Source!</p>
               </div>
             </section>
-          </li>
+          </div>
         </tab>
         <tab
           name="Closed task"
@@ -92,6 +92,5 @@ export default {
 <style>
 @import "./style/task.css";
 @import "./style/description.css";
-@import "./style/index.css";
 </style>
  

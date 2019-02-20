@@ -38,6 +38,11 @@
   justify-content: space-between;
 }
 
+.social-link__title {
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
 .social-link__item {
   position: relative;
   margin-right: 2rem;
@@ -73,11 +78,6 @@
   max-width: 100%;
 }
 
-.social-link__title {
-  margin-right: 0.5rem;
-  font-weight: 600;
-}
-
 @media (max-width: 992px) {
   .tags-item {
     margin-right: 1rem;
@@ -97,12 +97,12 @@
     margin-bottom: 0;
   }
 
-  .social-link__item {
-    margin-right: 1.5rem;
-  }
-
   .social-link__title {
     margin-right: 0.25rem;
+  }
+
+  .social-link__item {
+    margin-right: 1.5rem;
   }
 }
 
