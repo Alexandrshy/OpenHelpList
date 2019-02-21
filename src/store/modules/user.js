@@ -1,8 +1,9 @@
 import * as fb from "firebase";
 
 class User {
-  constructor(id) {
+  constructor(id, name) {
     this.id = id;
+    this.name = name;
   }
 }
 
@@ -27,7 +28,11 @@ export default {
           .auth()
           .signInWithPopup(user)
           .then(result => {
-            commit("setUser", new User(result.user.uid));
+            console.log("result", result);
+            commit(
+              "setUser",
+              new User(result.user.uid, result.user.displayName)
+            );
             commit("setLoading", false);
           });
       } catch (error) {
@@ -43,12 +48,13 @@ export default {
       commit("setLoading", true);
 
       try {
-        const user = new fb.auth.GoogleAuthProvider();
+        const user = new fb.auth.GithubAuthProvider();
         user.addScope("email");
         await fb
           .auth()
           .signInWithPopup(user)
           .then(result => {
+            console.log("result", result);
             commit("setUser", new User(result.user.uid));
             commit("setLoading", false);
           });
@@ -79,7 +85,7 @@ export default {
       }
     },
     autoLogInUser({ commit }, payload) {
-      commit("setUser", new User(payload.uid));
+      commit("setUser", new User(payload.uid, payload.displayName));
     }
   },
   getters: {

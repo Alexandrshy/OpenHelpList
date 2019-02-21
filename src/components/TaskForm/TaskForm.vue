@@ -6,17 +6,11 @@
           <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h3>
           <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</h3>
         </div>
-        <div class="task-form__tab task-form__tab--preview">
-          <task-item
-            :key="task.id"
-            :task="task"
-            :index="index"
-            :preview="true"
-            class="task__item--embed"
-          ></task-item>
+        <div class="task-form__tab task-form__tab--preview" v-if="preview">
+          <task-item :key="task.id" :task="task" :preview="true" class="task__item--embed"></task-item>
         </div>
         <form class="task-form__elem" @submit.prevent="submitForm" @change="changeForm">
-          <div class="task-form__editor">
+          <div class="task-form__editor" v-if="!preview">
             <div class="task-form__item">
               <label for="taskTitle" class="required">Task title</label>
               <input
@@ -82,7 +76,7 @@
                 v-model="tag"
                 :tags="tags"
                 :max-tags="5"
-                :maxlength="20"
+                :maxlength="25"
                 :delete-on-backspace="false"
                 placeholder="Example: Frontend, React, Jest, etc."
                 @tags-changed="newTags => tags = newTags"
@@ -123,12 +117,13 @@
             </div>
           </div>
           <div class="task-form__item task-form__item--button">
+            <button class="button task-form__button" type="submit" :disabled="loading">{{button}}</button>
             <button
               class="button task-form__button"
-              type="submit"
-              :disabled="loading"
-            >{{button.text}}</button>
-            <button class="button task-form__button" type="button" :disabled="loading">Preview</button>
+              type="button"
+              :disabled="this.$v.$invalid"
+              @click="switchScreen"
+            >{{preview ? 'Edit' : 'Preview'}}</button>
           </div>
           <p
             class="task-form__message task-form__message--noIndent task-form__message--status"
@@ -151,6 +146,10 @@ export default {
     VueTagsInput,
     taskItem: TaskItem
   },
+  beforeCreate() {
+    this.$store.dispatch("clearMessage");
+    this.$store.dispatch("setBtnLoadingStatus", "Post a task");
+  },
   data() {
     return {
       tag: "",
@@ -161,24 +160,7 @@ export default {
       authorLink: "",
       projectTitle: "",
       projectLink: "",
-      button: {
-        text: "Post a task"
-      },
-      task: {
-        id: 1,
-        author: "Alex Shu",
-        authorLink: "https://github.com/Alexandrshy",
-        project: "OpenHelpList",
-        projectLink: "https://github.com/Alexandrshy/OpenHelpList",
-        projectLogo: "",
-        projectissue: "https://github.com/GoogleChrome/puppeteer/issues/3761",
-        title: "Modify README.md",
-        description: "test test test",
-        language: "JavaScript",
-        level: "junior",
-        completed: false,
-        tag: ["JavaScript", "React", "Redux", "Jest"]
-      }
+      preview: false
     };
   },
   validations: {
@@ -203,32 +185,35 @@ export default {
         });
         return false;
       }
-      this.button.text = "Please wait";
-
+      const task = this.getTask();
+      this.$store.dispatch("addTask", task).then(() => {
+        this.cleanForm();
+      });
+    },
+    switchScreen() {
+      this.$v.$touch();
+      this.preview = !this.preview;
+    },
+    getTask() {
       const {
-        taskTitle,
-        taskLink,
-        taskDesc,
         authorLink,
-        tags,
+        projectLink,
         projectTitle,
-        projectLink
+        tags,
+        taskDesc,
+        taskLink,
+        taskTitle
       } = this;
       const tagsList = tags.map(tag => tag.text);
-      this.$store
-        .dispatch("addTask", {
-          taskTitle,
-          taskLink,
-          taskDesc,
-          authorLink,
-          tagsList,
-          projectTitle,
-          projectLink
-        })
-        .then(() => {
-          this.cleanForm();
-          this.reportSuccess(15000);
-        });
+      return {
+        authorLink,
+        projectLink,
+        projectTitle,
+        tagsList,
+        taskDesc,
+        taskLink,
+        taskTitle
+      };
     },
     changeForm() {
       if (this.message && !this.$v.$invalid) {
@@ -245,16 +230,6 @@ export default {
       this.projectTitle = "";
       this.projectLink = "";
       this.$v.$reset();
-    },
-    reportSuccess(time) {
-      this.$store.dispatch("setMessage", {
-        status: "successful",
-        message:
-          "Thank You! Your task is saved and very soon it will appear on the list"
-      });
-      setTimeout(() => {
-        this.$store.dispatch("clearMessage");
-      }, time);
     }
   },
   computed: {
@@ -266,6 +241,33 @@ export default {
     },
     status() {
       return this.$store.getters.status;
+    },
+    button() {
+      return this.$store.getters.btnLoadingStatus;
+    },
+    task() {
+      const {
+        authorLink,
+        projectTitle,
+        projectLink,
+        taskLink,
+        taskTitle,
+        taskDesc,
+        tagsList
+      } = this.getTask();
+      return {
+        id: 1000,
+        author: "Alex Shu",
+        projectLogo: "",
+        completed: false,
+        authorLink,
+        project: projectTitle,
+        projectLink,
+        projectissue: taskLink,
+        title: taskTitle,
+        description: taskDesc,
+        tag: tagsList
+      };
     }
   }
 };

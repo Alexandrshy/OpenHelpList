@@ -2,29 +2,27 @@ import * as fb from "firebase";
 
 class Task {
   constructor(
-    id,
-    taskTitle,
-    taskLink,
-    taskDesc,
-    tagsList,
-    authorLink,
     authorID,
-    publicationDate,
-    project = "test",
+    authorLink,
     projectLink = "teslink",
+    project = "test",
+    publicationDate,
+    tagsList,
+    taskDesc,
+    taskLink,
+    taskTitle,
     projectLogo = "",
     active = false
   ) {
-    this.id = id;
-    this.title = taskTitle;
-    this.link = taskLink;
-    this.description = taskDesc;
-    this.tags = tagsList;
-    this.authorLink = authorLink;
     this.author = authorID;
-    this.publicationDate = publicationDate;
-    this.project = project;
+    this.authorLink = authorLink;
     this.projectLink = projectLink;
+    this.project = project;
+    this.publicationDate = publicationDate;
+    this.tags = tagsList;
+    this.description = taskDesc;
+    this.link = taskLink;
+    this.title = taskTitle;
     this.projectLogo = projectLogo;
     this.active = active;
   }
@@ -58,37 +56,42 @@ export default {
   },
   actions: {
     async addTask({ commit, getters }, payload) {
+      commit("setBtnLoadingStatus", "Please wait");
       commit("clearMessage");
       commit("setLoading", true);
-
       try {
-        const authorID = getters.user.id;
         const {
-          taskTitle,
-          taskLink,
-          taskDesc,
-          tagsList,
           authorLink,
+          projectLink,
           projectTitle,
-          projectLink
+          tagsList,
+          taskDesc,
+          taskLink,
+          taskTitle
         } = payload;
+        const authorID = getters.user.id;
         const publicationDate = Date.now();
         const newTask = new Task(
-          taskTitle,
-          taskLink,
-          taskDesc,
-          tagsList,
-          authorLink,
           authorID,
-          publicationDate,
+          authorLink,
+          projectLink,
           projectTitle,
-          projectLink
+          publicationDate,
+          tagsList,
+          taskDesc,
+          taskLink,
+          taskTitle
         );
         const task = await fb
           .database()
           .ref("task")
-          .push({ id: task.key, ...newTask })
-          .then(() => {
+          .push(newTask)
+          .then(result => {
+            commit("setMessage", {
+              status: "successful",
+              message:
+                "Thank You! Your task is saved and very soon it will appear on the list"
+            });
             commit("setLoading", false);
           });
       } catch (error) {

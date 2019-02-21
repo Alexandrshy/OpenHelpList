@@ -65,7 +65,7 @@ export default {
   name: "taskItem",
   props: {
     index: {
-      default: "1",
+      default: "0",
       type: String
     },
     task: {

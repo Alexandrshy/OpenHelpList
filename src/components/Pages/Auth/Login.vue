@@ -13,7 +13,6 @@ import { required, minLength } from "vuelidate/lib/validators";
 export default {
   beforeCreate() {
     this.$store.dispatch("clearMessage");
-    this.$store.dispatch("clearMessage");
     this.$store.dispatch("setBtnLoadingStatus", "Login");
   },
   data() {
@@ -47,9 +46,7 @@ export default {
         .then(() => this.$router.push("/post-a-task"));
     },
     clickGoogleGitHub() {
-      this.$store
-        .dispatch("authUserUsingGitHub")
-        .then(() => this.$router.push("/post-a-task"));
+      this.$store.dispatch("authUserUsingGitHub");
     },
     clickSingOutButton() {
       this.$store.dispatch("authUserSingOut");
