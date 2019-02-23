@@ -1,6 +1,7 @@
 .button {
   position: relative;
   display: inline-block;
+  min-width: 175px;
   padding: 17px 35px 15px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -54,6 +55,7 @@
 @media (max-width: 768px) {
   .button {
     padding: 15px 30px 13px;
+    min-width: 135px;
     font-size: 0.85em;
   }
   .button::before {

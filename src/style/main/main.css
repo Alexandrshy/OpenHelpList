@@ -12,6 +12,7 @@ body {
 
 .main {
   min-height: calc(100vh - 184px);
+  padding-bottom: 100px;
 }
 
 html.is-modal-visible {
@@ -136,6 +137,7 @@ svg {
 
   .main {
     min-height: calc(100vh - 148px);
+    padding-bottom: 0px;
   }
 }
 

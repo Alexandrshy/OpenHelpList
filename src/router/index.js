@@ -1,14 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Vuelidate from "vuelidate";
-import AuthGuard from "./auth-guard";
+import { loginRedirect, profileRedirect } from "./auth-guard";
 import ErrorPage from "@/components/Pages/Error";
 import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
 import Contact from "@/components/Pages/Contact";
 import Post from "@/components/Pages/Post";
 import Login from "@/components/Pages/Auth/Login";
-import Registration from "@/components/Pages/Auth/Registration";
+import Profile from "@/components/Pages/Profile";
 import TaskModal from "@/components/Task/TaskModal";
 
 Vue.use(Router);
@@ -32,6 +32,16 @@ export default new Router({
           meta: {
             showModal: true
           }
+        },
+        {
+          path: "auth",
+          name: "Auth",
+          components: {
+            task: Login
+          },
+          meta: {
+            showModalAuth: true
+          }
         }
       ]
     },
@@ -48,18 +58,20 @@ export default new Router({
     {
       path: "/post-a-task",
       name: "post-a-task",
-      component: Post
-      // beforeEnter: AuthGuard
+      component: Post,
+      beforeEnter: loginRedirect
     },
     {
       path: "/login",
       name: "login",
-      component: Login
+      component: Login,
+      beforeEnter: profileRedirect
     },
     {
-      path: "/registration",
-      name: "registration",
-      component: Registration
+      path: "/profile",
+      name: "profile",
+      component: Profile,
+      beforeEnter: loginRedirect
     },
     {
       path: "/tasks",

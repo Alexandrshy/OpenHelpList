@@ -188,6 +188,7 @@ export default {
       const task = this.getTask();
       this.$store.dispatch("addTask", task).then(() => {
         this.cleanForm();
+        this.preview = false;
       });
     },
     switchScreen() {
@@ -245,6 +246,9 @@ export default {
     button() {
       return this.$store.getters.btnLoadingStatus;
     },
+    user() {
+      return this.$store.getters.user.name;
+    },
     task() {
       const {
         authorLink,
@@ -257,7 +261,7 @@ export default {
       } = this.getTask();
       return {
         id: 1000,
-        author: "Alex Shu",
+        author: this.user,
         projectLogo: "",
         completed: false,
         authorLink,

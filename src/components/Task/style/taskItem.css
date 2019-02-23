@@ -84,6 +84,10 @@
   overflow: hidden;
 }
 
+.task__description-wrapper:last-child {
+  margin-bottom: 0;
+}
+
 .task__description-wrapper::after {
   content: "";
   display: block;
@@ -123,6 +127,10 @@
     padding: 0 1.25rem;
   }
 
+  .task__item.task__item--embed {
+    padding: 0;
+  }
+
   .task__item-wrapper {
     padding: 2rem 0;
   }
@@ -132,6 +140,10 @@
     padding: 0;
   }
 
+  .task__item.task__item--embed .task__desc-part {
+    padding: 0 1.5rem;
+  }
+
   .task__item-main {
     margin-bottom: 1.5rem;
   }
@@ -139,6 +151,10 @@
   .task__title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+  }
+
+  .task__logo-part {
+    display: none;
   }
 
   .task__item-social-link {

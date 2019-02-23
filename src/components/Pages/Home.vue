@@ -7,11 +7,15 @@
         <p
           class="subtitle"
         >Want to grow as a developer and find great work? Do not wipe your pants - engage Open Source projects. So the easiest way to get into the best development teams and put yourself in the summary of this project.</p>
+        <router-link class="button task__button" to="/post-a-task">Post a task</router-link>
       </div>
       <task></task>
     </section>
     <modal v-if="showModal" ref="modal">
       <router-view name="task"/>
+    </modal>
+    <modal v-if="showModal" ref="auth">
+      <router-view name="auth"/>
     </modal>
   </div>
 </template>

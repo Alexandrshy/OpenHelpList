@@ -32,7 +32,7 @@ export default {
   state: {
     tasks: [
       {
-        id: 1,
+        id: "1",
         author: "Alex Shu",
         authorLink: "https://github.com/Alexandrshy",
         project: "OpenHelpList",
@@ -82,7 +82,7 @@ export default {
           taskLink,
           taskTitle
         );
-        const task = await fb
+        await fb
           .database()
           .ref("task")
           .push(newTask)

@@ -1,10 +1,17 @@
 import store from "../store/";
 
-export default function(to, from, next) {
-  console.log("store.getters.user", store.getters.user);
+export const loginRedirect = (to, from, next) => {
   if (store.getters.user.id) {
     next();
   } else {
     next("/login");
   }
-}
+};
+
+export const profileRedirect = (to, from, next) => {
+  if (!store.getters.user.id) {
+    next();
+  } else {
+    next("/profile");
+  }
+};

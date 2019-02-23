@@ -5,22 +5,27 @@
       <div class="task__desc-part">
         <div class="task__item-header">
           <div class="task__content-meta content-meta">
-            <div class="task__content-meta-part content-meta-part">
+            <div class="task__content-meta-part content-meta-part" v-if="task.project">
               <span class="task__content-meta-title">Project</span>
               <a
                 class="task__content-meta-link task__project-title"
                 :href="task.projectLink"
+                v-if="task.projectLink"
               >{{task.project}}</a>
+              <span class="task__content-meta-link task__project-title" v-else>{{task.project}}</span>
             </div>
             <div
-              class="task__content-meta-part content-meta-part content-meta-part--right"
+              class="task__content-meta-part content-meta-part"
+              :class="{'content-meta-part--right': task.project}"
               v-if="task.author"
             >
               <span class="task__content-meta-title">Author</span>
               <a
                 class="task__content-meta-link task__author"
                 :href="task.authorLink"
+                v-if="task.authorLink"
               >{{task.author}}</a>
+              <span class="task__content-meta-link task__author" v-else>{{task.author}}</span>
             </div>
           </div>
         </div>

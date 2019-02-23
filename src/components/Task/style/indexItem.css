@@ -110,6 +110,10 @@
   .social-link__wrapper {
     margin-bottom: 1rem;
   }
+
+  .tags-list {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 480px) {

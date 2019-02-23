@@ -11,21 +11,18 @@ import CONFIG from "./config";
 Vue.config.productionTip = false;
 
 Vue.use(VueResource);
-Vue.http.options.root = "http://localhost:3000/";
 
 /* eslint-disable no-new */
-new Vue({
-  el: "#app",
-  router,
-  store,
-  components: { App },
-  template: "<App/>",
-  created() {
-    fb.initializeApp(CONFIG);
-    fb.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.$store.dispatch("autoLogInUser", user);
-      }
-    });
+fb.initializeApp(CONFIG);
+fb.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch("autoLogInUser", user);
   }
+  new Vue({
+    el: "#app",
+    router,
+    store,
+    components: { App },
+    template: "<App/>"
+  });
 });

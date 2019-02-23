@@ -18,7 +18,6 @@
           </button>
         </li>
       </ul>
-      <button class="button" @click="$router.push('/post-a-task')">Post a task</button>
     </div>
     <ul class="tabs__details-list">
       <slot></slot>

@@ -1,13 +1,23 @@
 <template>
-  <div class="task">
+  <div class="task" v-if="openTasksLength > 0 || completeTasksLength > 0">
     <div class="task__wrapper">
       <tabs v-on:clickTab="setActivetab">
-        <tab name="Open task" :length="openTasksLength" :selected="activeTab === 'Open task'">
-          <task-item v-for="(task, index) in openTasks" :key="task.id" :task="task" :index="index"></task-item>
+        <tab
+          name="Open task"
+          :length="openTasksLength"
+          :selected="activeTab === 'Open task'"
+          v-if="openTasksLength > 0"
+        >
+          <task-item
+            v-for="(task, index) in openTasks"
+            :key="task.id"
+            :task="task"
+            :index="String(index)"
+          ></task-item>
           <div
             class="task__item task__item--additional"
-            style="order: 2;"
-            v-if="openTasksLength > 2"
+            style="order: 1;"
+            v-if="openTasksLength > 0"
           >
             <section class="task__item-wrapper task__item-wrapper--additional">
               <div class="task__desc-part task__desc-part--full-width">
@@ -25,7 +35,7 @@
           <div
             class="task__item task__item--additional"
             style="order: 5;"
-            v-if="openTasksLength > 4"
+            v-if="openTasksLength > 2"
           >
             <section class="task__item-wrapper task__item-wrapper--additional">
               <div class="task__desc-part task__desc-part--full-width">
@@ -43,6 +53,7 @@
           name="Closed task"
           :length="completeTasksLength"
           :selected="activeTab === 'Closed task'"
+          v-if="completeTasksLength > 0"
         >
           <task-item v-for="task in completeTasks" :key="task.id" :task="task"></task-item>
         </tab>

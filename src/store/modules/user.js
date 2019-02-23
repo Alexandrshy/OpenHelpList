@@ -9,7 +9,7 @@ class User {
 
 export default {
   state: {
-    user: ""
+    user: "guest"
   },
   mutations: {
     setUser(state, payload) {
@@ -28,7 +28,6 @@ export default {
           .auth()
           .signInWithPopup(user)
           .then(result => {
-            console.log("result", result);
             commit(
               "setUser",
               new User(result.user.uid, result.user.displayName)
@@ -54,7 +53,6 @@ export default {
           .auth()
           .signInWithPopup(user)
           .then(result => {
-            console.log("result", result);
             commit("setUser", new User(result.user.uid));
             commit("setLoading", false);
           });
