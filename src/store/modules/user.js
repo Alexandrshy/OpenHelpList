@@ -1,9 +1,10 @@
 import * as fb from "firebase";
 
 class User {
-  constructor(id, name) {
+  constructor(id, name, email) {
     this.id = id;
     this.name = name;
+    this.email = email;
   }
 }
 
@@ -30,7 +31,11 @@ export default {
           .then(result => {
             commit(
               "setUser",
-              new User(result.user.uid, result.user.displayName)
+              new User(
+                result.user.uid,
+                result.user.displayName,
+                result.user.email
+              )
             );
             commit("setLoading", false);
           });
@@ -53,7 +58,14 @@ export default {
           .auth()
           .signInWithPopup(user)
           .then(result => {
-            commit("setUser", new User(result.user.uid));
+            commit(
+              "setUser",
+              new User(
+                result.user.uid,
+                result.user.displayName,
+                result.user.email
+              )
+            );
             commit("setLoading", false);
           });
       } catch (error) {
@@ -83,12 +95,24 @@ export default {
       }
     },
     autoLogInUser({ commit }, payload) {
-      commit("setUser", new User(payload.uid, payload.displayName));
+      commit(
+        "setUser",
+        new User(payload.uid, payload.displayName, payload.email)
+      );
     }
   },
   getters: {
     user(state) {
       return state.user;
+    },
+    userID(state) {
+      return state.user.id;
+    },
+    userName(state) {
+      return state.user.name;
+    },
+    userEmail(state) {
+      return state.user.email;
     },
     isUserLoggedIn(state) {
       return state.user !== null;

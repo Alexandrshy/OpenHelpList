@@ -63,7 +63,6 @@ h1,
   font-size: 4.75rem;
   font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -1px;
 }
 
 h2,
@@ -101,6 +100,10 @@ svg {
 
 .page-initial-screen {
   max-width: 800px;
+}
+
+.page-initial-screen h1 {
+  letter-spacing: -1px;
 }
 
 @media (max-width: 1280px) {

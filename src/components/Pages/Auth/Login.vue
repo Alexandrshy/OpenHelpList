@@ -9,7 +9,6 @@
         >To create new tasks, log in using one of the social networks. This will help you manage your tasks and close them when they are completed.</p>
         <button class="button" @click="clickGoogleButton">Google</button>
         <button class="button" @click="clickGoogleGitHub">GitHub</button>
-        <button @click="clickSingOutButton">разлогинься!</button>
       </div>
     </section>
   </div>
@@ -33,9 +32,6 @@ export default {
     },
     clickGoogleGitHub() {
       this.$store.dispatch("authUserUsingGitHub");
-    },
-    clickSingOutButton() {
-      this.$store.dispatch("authUserSingOut");
     }
   }
 };
