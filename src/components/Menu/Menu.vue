@@ -4,7 +4,7 @@
       <div class="menu__box">
         <ul class="menu__list">
           <li class="menu__item" v-for="link in linkMenu" :key="link.title" @click="closeMenu">
-            <router-link class="menu__link" :to="`${link.url}`">{{link.title}}</router-link>
+            <router-link class="menu__link" :to="link.url">{{link.title}}</router-link>
           </li>
         </ul>
         <ul class="menu__list menu__list--social">
@@ -23,20 +23,21 @@
 <script>
 export default {
   name: "customMenu",
-  props: ["isMenuShow", "closeMenu"],
-  data() {
-    return {
-      menuShow: false,
-      linkMenu: [
-        { title: "Home", url: "/" },
-        { title: "About", url: "/about" },
-        { title: "Contact", url: "/contact" }
-      ],
-      linkSocial: [
-        { title: "Twitter", url: "/" },
-        { title: "Linkedin", url: "/" }
-      ]
-    };
+  methods: {
+    closeMenu() {
+      this.$store.dispatch("closeMenu");
+    }
+  },
+  computed: {
+    linkMenu() {
+      return this.$store.getters.linkMenu;
+    },
+    linkSocial() {
+      return this.$store.getters.linkSocial;
+    },
+    isMenuShow() {
+      return this.$store.getters.isMenuShow;
+    }
   }
 };
 </script>

@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+.task__item:first-child {
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
 .task__item.task__item--additional {
   background-color: #facbc71f;
 }
@@ -47,7 +53,8 @@
   margin-bottom: 3rem;
 }
 
-.task__item.task__item--embed .task__item-main {
+.task__item.task__item--embed .task__item-main,
+.task__item-main:last-child {
   margin-bottom: 0;
 }
 

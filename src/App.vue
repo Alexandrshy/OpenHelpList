@@ -1,39 +1,29 @@
 <template>
   <div id="app">
     <custom-header></custom-header>
-    <menu-burger :isMenuShow="isMenuShow" :switchMenu="switchMenu"></menu-burger>
+    <menu-burger></menu-burger>
     <main class="main">
       <router-view></router-view>
+      <breadcrumbs></breadcrumbs>
     </main>
-    <custom-menu :isMenuShow="isMenuShow" :closeMenu="closeMenu"></custom-menu>
+    <custom-menu></custom-menu>
     <custom-footer></custom-footer>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header/Header.vue";
-import Footer from "./components/Footer/Footer.vue";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.vue";
 import MenuBurger from "./components/Menu/MenuBurger.vue";
 import Menu from "./components/Menu/Menu.vue";
+import Footer from "./components/Footer/Footer.vue";
 export default {
   components: {
     customHeader: Header,
+    breadcrumbs: Breadcrumbs,
     customFooter: Footer,
     menuBurger: MenuBurger,
     customMenu: Menu
-  },
-  data() {
-    return {
-      isMenuShow: false
-    };
-  },
-  methods: {
-    switchMenu() {
-      this.isMenuShow = !this.isMenuShow;
-    },
-    closeMenu() {
-      this.isMenuShow = false;
-    }
   },
   watch: {
     $route(to, from) {

@@ -64,8 +64,8 @@ export default new Router({
     {
       path: "/login",
       name: "login",
-      component: Login
-      // beforeEnter: profileRedirect
+      component: Login,
+      beforeEnter: profileRedirect
     },
     {
       path: "/profile",

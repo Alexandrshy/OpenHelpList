@@ -7,7 +7,16 @@
 <script>
 export default {
   name: "menuBurger",
-  props: ["isMenuShow", "switchMenu"]
+  methods: {
+    switchMenu() {
+      this.$store.dispatch("switchMenu");
+    }
+  },
+  computed: {
+    isMenuShow() {
+      return this.$store.getters.isMenuShow;
+    }
+  }
 };
 </script>
 

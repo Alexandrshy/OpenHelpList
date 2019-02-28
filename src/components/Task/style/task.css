@@ -1,5 +1,5 @@
 .task {
-  padding: 10rem 0 5rem;
+  padding: 10rem 0 0;
 }
 
 .task__wrapper {
@@ -31,13 +31,13 @@
 
 @media (max-width: 1280px) {
   .task {
-    padding: 5rem 0;
+    padding: 5rem 0 0;
   }
 }
 
 @media (max-width: 768px) {
   .task {
-    padding: 3rem 0;
+    padding: 3rem 0 0;
   }
 
   .task__button {

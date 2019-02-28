@@ -1,5 +1,10 @@
 <template>
-  <div :id="`task-${task.id}`" class="task__item" :style="{order: index}">
+  <div
+    :id="`task-${task.id}`"
+    class="task__item"
+    :class="{'task__item--completed': task.completed}"
+    :style="{order: index}"
+  >
     <section class="task__item-wrapper">
       <task-logo :img="task.projectLogo" :alt="task.project"></task-logo>
       <div class="task__desc-part">
@@ -38,7 +43,7 @@
             <li class="tags-item" v-for="tag in task.tag" :key="tag">#{{tag}}</li>
           </ul>
         </div>
-        <div class="task__item-footer social-link" v-if="!preview">
+        <div class="task__item-footer social-link" v-if="!preview && !editable">
           <div class="task__item-social-item social-link__wrapper">
             <span class="task__item-social-title social-link__title">Link:</span>
             <a
@@ -77,6 +82,10 @@ export default {
       type: Object
     },
     preview: {
+      default: false,
+      type: Boolean
+    },
+    editable: {
       default: false,
       type: Boolean
     }

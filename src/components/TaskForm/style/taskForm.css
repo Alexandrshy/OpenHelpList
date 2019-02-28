@@ -1,5 +1,5 @@
 .task-form {
-  padding: 10rem 0 5rem;
+  padding: 10rem 0 0;
 }
 
 .task-form__wrapper {
@@ -58,14 +58,6 @@
   display: none;
 }
 
-.task-form__button {
-  margin-right: 3rem;
-}
-
-.task-form__button:last-child {
-  margin-bottom: 0;
-}
-
 .task-form__item--button .task-form__message {
   width: calc(100% - 180px);
   padding: 0 4.5rem;
@@ -83,7 +75,7 @@
 
 @media (max-width: 1280px) {
   .task-form {
-    padding: 5rem 0;
+    padding: 5rem 0 0;
   }
 
   .task-form__item--button .task-form__message {
@@ -93,7 +85,7 @@
 
 @media (max-width: 992px) {
   .task-form {
-    padding: 4rem 0;
+    padding: 4rem 0 0;
   }
 
   .task-form__box {
@@ -107,7 +99,7 @@
 
 @media (max-width: 768px) {
   .task-form {
-    padding: 3.5rem 0;
+    padding: 3.5rem 0 0;
   }
 
   .task-form__box {
@@ -139,14 +131,13 @@
   }
 
   .task-form__button {
-    margin-right: 1.5rem;
     margin-bottom: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .task-form {
-    padding: 3rem 0;
+    padding: 3rem 0 0;
   }
 
   .task-form__box {
@@ -154,7 +145,6 @@
   }
 
   .task-form__button {
-    margin-right: 1rem;
     margin-bottom: 1rem;
   }
 }

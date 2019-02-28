@@ -12,7 +12,7 @@ body {
 
 .main {
   min-height: calc(100vh - 184px);
-  padding-bottom: 100px;
+  padding-bottom: 6rem;
 }
 
 html.is-modal-visible {
@@ -120,6 +120,12 @@ svg {
   }
 }
 
+@media (max-width: 992px) {
+  .main {
+    padding-bottom: 4rem;
+  }
+}
+
 @media (max-width: 768px) {
   h1,
   .h1 {
@@ -140,7 +146,7 @@ svg {
 
   .main {
     min-height: calc(100vh - 148px);
-    padding-bottom: 0px;
+    padding-bottom: 2.5rem;
   }
 }
 

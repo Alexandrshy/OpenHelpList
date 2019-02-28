@@ -14,9 +14,6 @@
     <modal v-if="showModal" ref="modal">
       <router-view name="task"/>
     </modal>
-    <modal v-if="showModal" ref="auth">
-      <router-view name="auth"/>
-    </modal>
   </div>
 </template>
 

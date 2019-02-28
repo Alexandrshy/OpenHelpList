@@ -5,8 +5,27 @@
         <title-project></title-project>
         <h1 class="h1">{{name}}</h1>
         <p class="subtitle">{{email}}</p>
-        <router-link class="button task__button" to="/post-a-task">Post a task</router-link>
+        <router-link class="button" to="/post-a-task">Post a task</router-link>
         <button class="button" @click="clickSingOutButton">Log Out</button>
+      </div>
+      <div class="task">
+        <task-item
+          v-for="(task, index) in userTask"
+          :key="task.id"
+          :task="task"
+          :index="String(index)"
+          :editable="true"
+        ></task-item>
+        <div class="task__item task__item--additional" v-if="userTask.length === 0">
+          <section class="task__item-wrapper task__item-wrapper--additional">
+            <div class="task__desc-part task__desc-part--full-width">
+              <h3 class="task__title task__title--additional">You haven't tasks yet</h3>
+              <p
+                class="task__subtitle"
+              >All your open and closed tasks will be available to you in your profile.</p>
+            </div>
+          </section>
+        </div>
       </div>
     </section>
   </div>
@@ -14,9 +33,11 @@
 
 <script>
 import TitleProject from "@/components/TitleProject/TitleProject.vue";
+import TaskItem from "@/components/Task/TaskItem.vue";
 export default {
   components: {
-    titleProject: TitleProject
+    titleProject: TitleProject,
+    taskItem: TaskItem
   },
   computed: {
     name() {
@@ -24,13 +45,41 @@ export default {
     },
     email() {
       return this.$store.getters.userEmail;
+    },
+    userTask() {
+      return this.$store.getters.userTask;
     }
   },
   methods: {
     clickSingOutButton() {
-      this.$store.dispatch("authUserSingOut");
+      this.$store
+        .dispatch("authUserSingOut")
+        .then(() => this.$router.push("/"));
     }
   }
 };
 </script>
+
+<style>
+@import "../Task/style/task.css";
+@import "../Task/style/taskItem.css";
+@import "../Task/style/description.css";
+@import "../Task/style/indexItem.css";
+
+.task__item--completed {
+  background-color: #c8fac71f;
+}
+
+.task__item--completed .task__description-wrapper::after {
+  background-image: linear-gradient(
+    180deg,
+    rgba(248, 254, 247, 0) 0,
+    rgba(248, 254, 247, 1) 100%
+  );
+  background-position: 50% 50%;
+  background-origin: padding-box;
+  background-clip: border-box;
+  background-size: auto auto;
+}
+</style>
 
