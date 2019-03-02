@@ -9,22 +9,24 @@
         <button class="button" @click="clickSingOutButton">Log Out</button>
       </div>
       <div class="task">
-        <task-item
-          v-for="(task, index) in userTask"
-          :key="task.id"
-          :task="task"
-          :index="String(index)"
-          :editable="true"
-        ></task-item>
-        <div class="task__item task__item--additional" v-if="userTask.length === 0">
-          <section class="task__item-wrapper task__item-wrapper--additional">
-            <div class="task__desc-part task__desc-part--full-width">
-              <h3 class="task__title task__title--additional">You haven't tasks yet</h3>
-              <p
-                class="task__subtitle"
-              >All your open and closed tasks will be available to you in your profile.</p>
-            </div>
-          </section>
+        <div class="task__box">
+          <task-item
+            v-for="(task, index) in userTask"
+            :key="task.id"
+            :task="task"
+            :index="String(index)"
+            :editable="true"
+          ></task-item>
+          <div class="task__item task__item--additional" v-if="userTask.length === 0">
+            <section class="task__item-wrapper task__item-wrapper--additional">
+              <div class="task__desc-part task__desc-part--full-width">
+                <h3 class="task__title task__title--additional">You haven't tasks yet</h3>
+                <p
+                  class="task__subtitle"
+                >All your open and closed tasks will be available to you in your profile.</p>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
     </section>

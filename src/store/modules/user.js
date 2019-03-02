@@ -1,4 +1,5 @@
 import * as fb from "firebase";
+import router from "../../router";
 
 class User {
   constructor(id, name, email) {
@@ -47,7 +48,7 @@ export default {
         });
       }
     },
-    async authUserUsingGitHub({ commit }) {
+    async authUserUsingGitHub({ commit }, payload) {
       commit("clearMessage");
       commit("setLoading", true);
 
@@ -67,6 +68,7 @@ export default {
               )
             );
             commit("setLoading", false);
+            if (payload) router.push(payload.url);
           });
       } catch (error) {
         commit("setLoading", false);

@@ -51,10 +51,32 @@
 }
 
 .tabs__details-item {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   min-width: 100%;
   margin: 0 -2rem;
+}
+
+.tabs__details-item::before,
+.tabs__details-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
+.tabs__details-item::before {
+  top: 0;
+}
+
+.tabs__details-item::after {
+  bottom: 0;
 }
 
 @media (max-width: 768px) {

@@ -8,13 +8,14 @@ import About from "@/components/Pages/About";
 import Contact from "@/components/Pages/Contact";
 import Post from "@/components/Pages/Post";
 import Login from "@/components/Pages/Auth/Login";
+import LoginToTask from "@/components/Pages/Auth/LoginToTask";
 import Profile from "@/components/Pages/Profile";
 import TaskModal from "@/components/Task/TaskModal";
 
 Vue.use(Router);
 Vue.use(Vuelidate);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   routes: [
     {
@@ -68,6 +69,12 @@ export default new Router({
       beforeEnter: profileRedirect
     },
     {
+      path: "/login-to-task",
+      name: "login-to-task",
+      component: LoginToTask,
+      beforeEnter: profileRedirect
+    },
+    {
       path: "/profile",
       name: "profile",
       component: Profile,
@@ -94,3 +101,5 @@ export default new Router({
     }
   }
 });
+
+export default router;

@@ -22,15 +22,15 @@
             <div
               class="task__content-meta-part content-meta-part"
               :class="{'content-meta-part--right': task.project}"
-              v-if="task.author"
+              v-if="task.authorName"
             >
               <span class="task__content-meta-title">Author</span>
               <a
                 class="task__content-meta-link task__author"
                 :href="task.authorLink"
                 v-if="task.authorLink"
-              >{{task.author}}</a>
-              <span class="task__content-meta-link task__author" v-else>{{task.author}}</span>
+              >{{task.authorName}}</a>
+              <span class="task__content-meta-link task__author" v-else>{{task.authorName}}</span>
             </div>
           </div>
         </div>

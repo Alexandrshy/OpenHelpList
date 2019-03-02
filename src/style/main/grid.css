@@ -7,7 +7,7 @@
 }
 
 .page-selector {
-  padding: 5rem 0 6rem;
+  padding: 5rem 0 8rem;
 }
 
 .row {
@@ -41,7 +41,7 @@
   }
 
   .page-selector {
-    padding: 2.5rem 0 4rem;
+    padding: 2.5rem 0 5rem;
   }
 }
 
@@ -53,6 +53,6 @@
   }
 
   .page-selector {
-    padding: 1rem 0 2.5rem;
+    padding: 1rem 0 3rem;
   }
 }

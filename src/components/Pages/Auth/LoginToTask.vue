@@ -26,10 +26,10 @@ export default {
   },
   methods: {
     clickGoogleButton() {
-      this.$store.dispatch("authUserUsingGoogle", { url: "/profile" });
+      this.$store.dispatch("authUserUsingGoogle", { url: "/post-a-task" });
     },
     clickGoogleGitHub() {
-      this.$store.dispatch("authUserUsingGitHub", { url: "/profile" });
+      this.$store.dispatch("authUserUsingGitHub", { url: "/post-a-task" });
     }
   }
 };

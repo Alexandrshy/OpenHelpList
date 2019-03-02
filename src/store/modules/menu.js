@@ -2,6 +2,13 @@ export default {
   state: {
     linkMenu: [
       { title: "Home", url: "/" },
+      { title: "Login", url: "/login" },
+      { title: "About", url: "/about" },
+      { title: "Contact", url: "/contact" }
+    ],
+    linkMenuRegistered: [
+      { title: "Home", url: "/" },
+      { title: "Profile", url: "/profile" },
       { title: "About", url: "/about" },
       { title: "Contact", url: "/contact" }
     ],
@@ -28,8 +35,12 @@ export default {
     }
   },
   getters: {
-    linkMenu(state) {
-      return state.linkMenu;
+    linkMenu(state, getters) {
+      if (getters.userID) {
+        return state.linkMenuRegistered;
+      } else {
+        return state.linkMenu;
+      }
     },
     linkSocial(state) {
       return state.linkSocial;

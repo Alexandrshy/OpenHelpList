@@ -7,6 +7,31 @@
   margin: 0 auto;
 }
 
+.task__box {
+  position: relative;
+}
+
+.task__box::before,
+.task__box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-image: url("../../../img/dot.svg");
+  background-repeat: repeat-x;
+  background-position: 0 0;
+}
+
+.task__box::before {
+  top: 0;
+}
+
+.task__box::after {
+  bottom: 0;
+}
+
 .task__logo {
   display: block;
   width: auto;
@@ -38,6 +63,10 @@
 @media (max-width: 768px) {
   .task {
     padding: 3rem 0 0;
+  }
+
+  .task__box {
+    margin: 0 -1.25rem;
   }
 
   .task__button {
