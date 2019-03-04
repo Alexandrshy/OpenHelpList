@@ -9,13 +9,14 @@
         <button class="button" @click="clickSingOutButton">Log Out</button>
       </div>
       <div class="task">
-        <div class="task__box">
+        <div class="task__box task__box--profile">
           <task-item
             v-for="(task, index) in userTask"
             :key="task.id"
             :task="task"
             :index="String(index)"
             :editable="true"
+            :typePage="'Profile'"
           ></task-item>
           <div class="task__item task__item--additional" v-if="userTask.length === 0">
             <section class="task__item-wrapper task__item-wrapper--additional">
@@ -82,6 +83,19 @@ export default {
   background-origin: padding-box;
   background-clip: border-box;
   background-size: auto auto;
+}
+
+.task__box--profile .task__description-wrapper::after {
+  display: none;
+}
+
+.task__description-wrapper .task__box--profile {
+  max-height: 100%;
+}
+
+.task__box--profile .task__description-wrapper {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 </style>
 

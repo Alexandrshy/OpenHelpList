@@ -46,10 +46,7 @@
         <div class="task__item-footer social-link" v-if="!preview && !editable">
           <div class="task__item-social-item social-link__wrapper">
             <span class="task__item-social-title social-link__title">Link:</span>
-            <a
-              :href="task.projectissue"
-              class="task__item-social-link social-link__item"
-            >Start working</a>
+            <a :href="task.link" class="task__item-social-link social-link__item">Start working</a>
             <router-link
               class="link task__item-social-link social-link__item"
               :to="{name: 'Task item', params: {id: task.id}}"
@@ -62,15 +59,18 @@
         </div>
       </div>
     </section>
+    <task-control-panel :taskID="task.id" :typePage="typePage"></task-control-panel>
   </div>
 </template>
 
 <script>
 import marked from "marked";
 import TaskLogo from "./TaskLogo.vue";
+import TaskControlPanel from "./TaskControlPanel.vue";
 export default {
   components: {
-    taskLogo: TaskLogo
+    taskLogo: TaskLogo,
+    taskControlPanel: TaskControlPanel
   },
   name: "taskItem",
   props: {
@@ -88,6 +88,10 @@ export default {
     editable: {
       default: false,
       type: Boolean
+    },
+    typePage: {
+      default: "Element",
+      type: String
     }
   },
   methods: {

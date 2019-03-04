@@ -26,10 +26,7 @@
       <div class="card__social social-link">
         <div class="card__social-item social-link__wrapper">
           <span class="card__social-title social-link__title">Link:</span>
-          <a
-            :href="task.projectissue"
-            class="task__item-social-link social-link__item"
-          >Start working</a>
+          <a :href="task.link" class="task__item-social-link social-link__item">Start working</a>
         </div>
         <div class="card__social-item social-link__wrapper">
           <span class="task__item-social-title social-link__title">Share:</span>
