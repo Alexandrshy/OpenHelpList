@@ -3,7 +3,8 @@ export default {
     loading: false,
     btnLoadingStatus: "",
     status: "",
-    message: ""
+    message: "",
+    title: ""
   },
   mutations: {
     setLoading(state, payload) {
@@ -16,12 +17,16 @@ export default {
       state.status = payload;
     },
     setMessage(state, payload) {
-      state.status = payload.status;
-      state.message = payload.message;
+      const { status, message, title } = payload;
+
+      state.status = status;
+      state.message = message;
+      state.title = title;
     },
     clearMessage(state) {
       state.status = "";
       state.message = "";
+      state.title = "";
     }
   },
   actions: {
@@ -53,6 +58,9 @@ export default {
     },
     message(state) {
       return state.message;
+    },
+    title(state) {
+      return state.title;
     }
   }
 };

@@ -11,6 +11,7 @@ import Login from "@/components/Pages/Auth/Login";
 import LoginToTask from "@/components/Pages/Auth/LoginToTask";
 import Profile from "@/components/Pages/Profile";
 import TaskModal from "@/components/Task/TaskModal";
+import store from "../store";
 
 Vue.use(Router);
 Vue.use(Vuelidate);
@@ -100,6 +101,11 @@ const router = new Router({
       return { x: 0, y: 0 };
     }
   }
+});
+
+router.beforeEach((to, from, next) => {
+  store.dispatch("clearMessage");
+  next();
 });
 
 export default router;

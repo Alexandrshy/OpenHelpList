@@ -1,0 +1,44 @@
+.message {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 100%;
+  max-width: 375px;
+  background-color: #fff;
+  margin-left: 30px;
+  box-shadow: 0 10px 35px 0 rgba(47, 47, 51, 0.25);
+  border: 2px solid #2f2f33;
+}
+
+.message__wrapper {
+  padding: 25px 30px 25px;
+  background-color: rgba(5, 59, 147, 0.075);
+}
+
+.message.is-invalid .message__wrapper {
+  background-color: rgba(173, 5, 5, 0.075);
+}
+
+.message.is-successful .message__wrapper {
+  background-color: rgba(5, 173, 59, 0.075);
+}
+
+.message-enter-active,
+.message-leave-active {
+  transition: all 0.3s ease;
+}
+.message-enter,
+.message-leave-to {
+  opacity: 0;
+  transform: translate(75px, 0);
+}
+
+.message__title {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+}
+
+.message__text {
+  line-height: 1.5;
+  font-size: 0.9rem;
+}

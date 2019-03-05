@@ -57,7 +57,17 @@ export default {
     clickSingOutButton() {
       this.$store
         .dispatch("authUserSingOut")
-        .then(() => this.$router.push("/"));
+        .then(() => this.$router.push("/"))
+        .then(() => {
+          this.$store.dispatch("setMessage", {
+            status: "warning",
+            title: "🚪 You are logged out",
+            message: "We will wait for you again!"
+          });
+          setTimeout(() => {
+            this.$store.dispatch("clearMessage");
+          }, 10000);
+        });
     }
   }
 };

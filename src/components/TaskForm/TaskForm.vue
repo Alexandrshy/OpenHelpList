@@ -125,11 +125,11 @@
               @click="switchScreen"
             >{{preview ? 'Edit' : 'Preview'}}</button>
           </div>
-          <p
+          <!-- <p
             class="task-form__message task-form__message--noIndent task-form__message--status"
             :class="{'is-invalid': status === 'error', 'is-successful': status === 'successful'}"
             v-if="status"
-          >{{message}}</p>
+          >{{message}}</p>-->
         </form>
       </div>
     </div>
@@ -147,7 +147,6 @@ export default {
     taskItem: TaskItem
   },
   beforeCreate() {
-    this.$store.dispatch("clearMessage");
     this.$store.dispatch("setBtnLoadingStatus", "Post a task");
   },
   data() {
@@ -180,8 +179,9 @@ export default {
       if (this.$v.$invalid) {
         this.$store.dispatch("setMessage", {
           status: "error",
+          title: "❗ Something went wrong",
           message:
-            "Not all required fields have been filled in. Fix it and try again"
+            "Not all required fields have been filled in. Fix it and try again."
         });
         return false;
       }
@@ -189,11 +189,15 @@ export default {
       this.$store.dispatch("addTask", task).then(() => {
         this.cleanForm();
         this.preview = false;
+        setTimeout(() => {
+          this.$store.dispatch("clearMessage");
+        }, 10000);
       });
     },
     switchScreen() {
       this.$v.$touch();
       this.preview = !this.preview;
+      this.$store.dispatch("clearMessage");
     },
     getTask() {
       const {

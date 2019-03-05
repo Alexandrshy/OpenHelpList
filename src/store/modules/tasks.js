@@ -130,9 +130,10 @@ export default {
           .push(newTask)
           .then(result => {
             commit("setMessage", {
+              title: "🙌 Success",
               status: "successful",
               message:
-                "Thank You! Your task is saved and very soon it will appear on the list"
+                "Thank You! Your task is saved and very soon it will appear on the list."
             });
             commit("setLoading", false);
           });

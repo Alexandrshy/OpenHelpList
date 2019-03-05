@@ -7,6 +7,7 @@
       <breadcrumbs></breadcrumbs>
     </main>
     <custom-menu></custom-menu>
+    <message></message>
     <custom-footer></custom-footer>
   </div>
 </template>
@@ -17,13 +18,15 @@ import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs.vue";
 import MenuBurger from "./components/Menu/MenuBurger.vue";
 import Menu from "./components/Menu/Menu.vue";
 import Footer from "./components/Footer/Footer.vue";
+import Message from "./components/Message/Message.vue";
 export default {
   components: {
     customHeader: Header,
     breadcrumbs: Breadcrumbs,
     customFooter: Footer,
     menuBurger: MenuBurger,
-    customMenu: Menu
+    customMenu: Menu,
+    message: Message
   },
   watch: {
     $route(to, from) {
