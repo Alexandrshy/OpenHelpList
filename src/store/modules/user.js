@@ -43,6 +43,7 @@ export default {
       } catch (error) {
         commit("setLoading", false);
         commit("setMessage", {
+          title: "❗ Oh, something went wrong",
           status: "error",
           message: error.message
         });
@@ -73,6 +74,7 @@ export default {
       } catch (error) {
         commit("setLoading", false);
         commit("setMessage", {
+          title: "❗ Oh, something went wrong",
           status: "error",
           message:
             error.code === "auth/account-exists-with-different-credential"
@@ -91,6 +93,7 @@ export default {
           });
       } catch (error) {
         commit("setMessage", {
+          title: "❗ Oh, something went wrong",
           status: "error",
           message: error.message
         });

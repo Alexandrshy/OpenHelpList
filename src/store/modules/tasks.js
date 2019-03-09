@@ -45,6 +45,11 @@ export default {
     },
     loadTask(state, payload) {
       state.tasks = payload;
+    },
+    updateCompleted(state, { key, updatedCompletedStatus }) {
+      const task = state.tasks.find(task => task.id === key);
+
+      task.completed = updatedCompletedStatus;
     }
   },
   actions: {
@@ -72,7 +77,8 @@ export default {
             link,
             title,
             projectLogo,
-            active
+            active,
+            completed
           } = task;
           result.push({
             id: key,
@@ -87,7 +93,8 @@ export default {
             link,
             title,
             projectLogo,
-            active
+            active,
+            completed
           });
         });
         commit("loadTask", result);
@@ -139,23 +146,58 @@ export default {
           });
       } catch (error) {
         commit("setMessage", {
+          title: "❗ Oh, something went wrong",
           status: "error",
           message: error.message
         });
         commit("setLoading", false);
       }
     },
-    async deleteTask({ commit }, payload) {
+    async deleteTask({ commit }, { key }) {
+      commit("setMessage", {
+        title: "Do you really want to delete this task?",
+        status: "confirm",
+        message: ""
+      });
+
+      // try {
+      //   await fb
+      //     .database()
+      //     .ref("task")
+      //     .child(key)
+      //     .remove()
+      //     .then(result => commit("deleteTask", key));
+      // } catch (error) {
+      //   commit("setMessage", {
+      //     title: "❗ Oh, something went wrong",
+      //     status: "error",
+      //     message: error.message
+      //   });
+      // }
+    },
+    async updateCompleted({ commit }, { key, updatedCompletedStatus }) {
       try {
-        const { key } = payload;
         await fb
           .database()
           .ref("task")
           .child(key)
-          .remove()
-          .then(result => commit("deleteTask", key));
+          .update({ completed: updatedCompletedStatus })
+          .then(() => {
+            commit("updateCompleted", { key, updatedCompletedStatus });
+            commit("setMessage", {
+              status: "warning",
+              title: "Updated task status",
+              message: updatedCompletedStatus
+                ? "The task was successfully completed"
+                : "The task has been reopened"
+            });
+          });
       } catch (error) {
-        console.error(error);
+        commit("setMessage", {
+          title: "❗ Oh, something went wrong",
+          status: "error",
+          message: error.message
+        });
       }
     }
   },

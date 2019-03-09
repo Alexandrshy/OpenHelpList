@@ -178,8 +178,8 @@ export default {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.$store.dispatch("setMessage", {
+          title: "❗ Oh, something went wrong",
           status: "error",
-          title: "❗ Something went wrong",
           message:
             "Not all required fields have been filled in. Fix it and try again."
         });

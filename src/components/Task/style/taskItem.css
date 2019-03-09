@@ -1,6 +1,7 @@
 .task__item {
   position: relative;
   width: 100%;
+  transition: background-color 0.35s ease;
 }
 
 .task__item::after {
@@ -198,6 +199,19 @@
   border: 2px solid #2f2f33;
   cursor: pointer;
   background-color: #fff;
+}
+
+.task__control-button:hover,
+.task__control-button:focus {
+  background-color: #053b93;
+  border-color: #053b93;
+  color: #fff;
+}
+
+.task__control-button.task__control-button--delete:hover,
+.task__control-button.task__control-button--delete:focus {
+  background-color: #930505;
+  border-color: #930505;
 }
 
 @media (max-width: 992px) {

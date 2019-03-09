@@ -20,12 +20,12 @@
 .burger-menu__inner,
 .burger-menu__inner:before,
 .burger-menu__inner:after {
-  background-color: #2f2f33;
-  border-radius: 4px;
   position: absolute;
-  transition: transform 0.15s ease, background-color 0.15s ease;
   width: 34px;
   height: 3px;
+  background-color: #2f2f33;
+  border-radius: 4px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 .burger-menu__inner {

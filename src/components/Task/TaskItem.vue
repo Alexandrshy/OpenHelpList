@@ -59,7 +59,7 @@
         </div>
       </div>
     </section>
-    <task-control-panel :taskID="task.id" :typePage="typePage"></task-control-panel>
+    <task-control-panel :taskID="task.id" :taskCompleted="task.completed" :typePage="typePage"></task-control-panel>
   </div>
 </template>
 
