@@ -18,12 +18,13 @@ fb.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch("autoLogInUser", user);
   }
-  store.dispatch("fetchTasks");
-  new Vue({
-    el: "#app",
-    router,
-    store,
-    components: { App },
-    template: "<App/>"
+  store.dispatch("fetchTasks").then(() => {
+    new Vue({
+      el: "#app",
+      router,
+      store,
+      components: { App },
+      template: "<App/>"
+    });
   });
 });

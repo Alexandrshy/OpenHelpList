@@ -24,11 +24,6 @@ export default {
       require: true
     }
   },
-  data() {
-    return {
-      timer: null
-    };
-  },
   methods: {
     updateCompletedTask() {
       this.$store
@@ -37,14 +32,18 @@ export default {
           updatedCompletedStatus: !this.taskCompleted
         })
         .then(() => {
-          if (this.timer) clearTimeout(this.timer);
-          this.timer = setTimeout(() => {
-            this.$store.dispatch("clearMessage");
-          }, 5000);
+          const timer = this.$store.getters.timer;
+          if (timer) clearTimeout(timer);
+          this.$store.dispatch(
+            "setTimerID",
+            setTimeout(() => {
+              this.$store.dispatch("clearMessage");
+            }, 5000)
+          );
         });
     },
     deleteTask() {
-      this.$store.dispatch("deleteTask", { key: this.taskID });
+      this.$store.dispatch("requestDeleteTask", { key: this.taskID });
     }
   }
 };

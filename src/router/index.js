@@ -7,6 +7,7 @@ import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
 import Contact from "@/components/Pages/Contact";
 import Post from "@/components/Pages/Post";
+import PostEdit from "@/components/Pages/PostEdit";
 import Login from "@/components/Pages/Auth/Login";
 import LoginToTask from "@/components/Pages/Auth/LoginToTask";
 import Profile from "@/components/Pages/Profile";
@@ -34,16 +35,6 @@ const router = new Router({
           meta: {
             showModal: true
           }
-        },
-        {
-          path: "auth",
-          name: "Auth",
-          components: {
-            task: Login
-          },
-          meta: {
-            showModalAuth: true
-          }
         }
       ]
     },
@@ -62,6 +53,22 @@ const router = new Router({
       name: "post-a-task",
       component: Post,
       beforeEnter: loginRedirect
+    },
+    {
+      path: "/edit-task/:id",
+      name: "edit-task",
+      component: { task: PostEdit },
+      props: {
+        task: 0
+      },
+      redirect: to => {
+        console.log("toto", store.getters.tasks);
+        console.log("toto2", to.params.id);
+        console.log(
+          "todo3",
+          store.getters.tasks.find(task => task.id === to.params.id)
+        );
+      }
     },
     {
       path: "/login",

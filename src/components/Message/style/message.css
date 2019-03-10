@@ -3,7 +3,7 @@
   bottom: 30px;
   right: 30px;
   width: calc(100% - 60px);
-  max-width: 375px;
+  max-width: 475px;
   background-color: #fff;
   margin-left: 30px;
   box-shadow: 0 10px 35px 0 rgba(47, 47, 51, 0.25);
@@ -110,6 +110,12 @@
 
 .message__button:last-child {
   margin-right: 0;
+}
+
+@media (max-width: 992px) {
+  .message {
+    max-width: 375px;
+  }
 }
 
 @media (max-width: 480px) {

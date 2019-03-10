@@ -125,11 +125,6 @@
               @click="switchScreen"
             >{{preview ? 'Edit' : 'Preview'}}</button>
           </div>
-          <!-- <p
-            class="task-form__message task-form__message--noIndent task-form__message--status"
-            :class="{'is-invalid': status === 'error', 'is-successful': status === 'successful'}"
-            v-if="status"
-          >{{message}}</p>-->
         </form>
       </div>
     </div>

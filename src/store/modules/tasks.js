@@ -153,27 +153,29 @@ export default {
         commit("setLoading", false);
       }
     },
-    async deleteTask({ commit }, { key }) {
+    requestDeleteTask({ commit }, { key }) {
       commit("setMessage", {
         title: "Do you really want to delete this task?",
         status: "confirm",
-        message: ""
+        message: "",
+        messageData: key
       });
-
-      // try {
-      //   await fb
-      //     .database()
-      //     .ref("task")
-      //     .child(key)
-      //     .remove()
-      //     .then(result => commit("deleteTask", key));
-      // } catch (error) {
-      //   commit("setMessage", {
-      //     title: "❗ Oh, something went wrong",
-      //     status: "error",
-      //     message: error.message
-      //   });
-      // }
+    },
+    async deleteTask({ commit }, { key }) {
+      try {
+        await fb
+          .database()
+          .ref("task")
+          .child(key)
+          .remove()
+          .then(result => commit("deleteTask", key));
+      } catch (error) {
+        commit("setMessage", {
+          title: "❗ Oh, something went wrong",
+          status: "error",
+          message: error.message
+        });
+      }
     },
     async updateCompleted({ commit }, { key, updatedCompletedStatus }) {
       try {

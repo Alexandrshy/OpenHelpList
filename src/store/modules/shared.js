@@ -4,9 +4,14 @@ export default {
     btnLoadingStatus: "",
     status: "",
     message: "",
-    title: ""
+    title: "",
+    messageData: "",
+    timerID: null
   },
   mutations: {
+    setTimerID(state, payload) {
+      state.timerID = payload;
+    },
     setLoading(state, payload) {
       state.loading = payload;
     },
@@ -17,11 +22,13 @@ export default {
       state.status = payload;
     },
     setMessage(state, payload) {
-      const { status, message, title } = payload;
+      const { status, message, title, messageData } = payload;
 
       state.status = status;
       state.message = message;
       state.title = title;
+      state.title = title;
+      state.messageData = messageData;
     },
     clearMessage(state) {
       state.status = "";
@@ -30,6 +37,9 @@ export default {
     }
   },
   actions: {
+    setTimerID({ commit }, payload) {
+      commit("setTimerID", payload);
+    },
     setLoading({ commit }, payload) {
       commit("setLoading", payload);
     },
@@ -44,6 +54,7 @@ export default {
     },
     clearMessage({ commit }) {
       commit("clearMessage");
+      commit("setTimerID", null);
     }
   },
   getters: {
@@ -61,6 +72,12 @@ export default {
     },
     title(state) {
       return state.title;
+    },
+    messageData(state) {
+      return state.messageData;
+    },
+    timer(state) {
+      return state.timerID;
     }
   }
 };

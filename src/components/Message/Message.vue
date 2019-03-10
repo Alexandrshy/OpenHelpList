@@ -9,7 +9,7 @@
         <h3 class="message__title">{{title}}</h3>
         <p class="message__text">{{message}}</p>
         <div class="message__control-panel">
-          <button class="button message__button" @click>Yes</button>
+          <button class="button message__button" @click="deleteTask">Yes</button>
           <button class="button message__button" @click="closeMessage">No</button>
         </div>
         <button class="message__close" @click="closeMessage">
@@ -37,6 +37,12 @@ export default {
   methods: {
     closeMessage() {
       this.$store.dispatch("clearMessage");
+    },
+    deleteTask() {
+      const key = this.$store.getters.messageData;
+      this.$store.dispatch("deleteTask", { key }).then(() => {
+        this.$store.dispatch("clearMessage");
+      });
     }
   }
 };
