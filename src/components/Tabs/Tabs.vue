@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "tabs",
-  created: function() {
+  created() {
     this.tabs = this.$children;
   },
   data() {

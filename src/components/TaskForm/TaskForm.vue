@@ -137,6 +137,7 @@ import { required } from "vuelidate/lib/validators";
 import TaskItem from "@/components/Task/TaskItem.vue";
 export default {
   name: "TaskForm",
+  props: ["taskData"],
   components: {
     VueTagsInput,
     taskItem: TaskItem
@@ -147,13 +148,13 @@ export default {
   data() {
     return {
       tag: "",
-      tags: [],
-      taskDesc: "",
-      taskTitle: "",
-      taskLink: "",
-      authorLink: "",
-      projectTitle: "",
-      projectLink: "",
+      tags: this.taskData ? this.taskData.tags : [],
+      taskDesc: this.taskData ? this.taskData.description : "",
+      taskTitle: this.taskData ? this.taskData.title : "",
+      taskLink: this.taskData ? this.taskData.link : "",
+      authorLink: this.taskData ? this.taskData.authorLink : "",
+      projectTitle: this.taskData ? this.taskData.project : "",
+      projectLink: this.taskData ? this.taskData.projectLink : "",
       preview: false
     };
   },
@@ -184,6 +185,7 @@ export default {
       this.$store.dispatch("addTask", task).then(() => {
         this.cleanForm();
         this.preview = false;
+        this.$store.dispatch("setBtnLoadingStatus", "Post a task");
         setTimeout(() => {
           this.$store.dispatch("clearMessage");
         }, 10000);

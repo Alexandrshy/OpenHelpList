@@ -1,8 +1,6 @@
 import store from "../store/";
 
 export const loginRedirect = (to, from, next) => {
-  console.log("21.from", to);
-  console.log("32.from", from);
   if (store.getters.user.id) {
     next();
   } else {
@@ -15,5 +13,15 @@ export const profileRedirect = (to, from, next) => {
     next();
   } else {
     next("/profile");
+  }
+};
+
+export const editTaskRedirect = (to, from, next) => {
+  const task = store.getters.tasks.find(task => task.id === to.params.id);
+
+  if (task) {
+    next();
+  } else {
+    next("/");
   }
 };

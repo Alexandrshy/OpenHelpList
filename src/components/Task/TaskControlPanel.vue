@@ -1,6 +1,6 @@
 <template>
   <div v-if="typePage === 'Profile'" class="task__control-panel">
-    <button class="task__control-button">Edit</button>
+    <router-link :to="`/edit-task/${taskID}`" class="task__control-button">Edit</router-link>
     <button
       class="task__control-button"
       @click="updateCompletedTask"
@@ -25,6 +25,9 @@ export default {
     }
   },
   methods: {
+    editTask() {
+      this.$router.push(`/edit-task/${this.taskID}`);
+    },
     updateCompletedTask() {
       this.$store
         .dispatch("updateCompleted", {

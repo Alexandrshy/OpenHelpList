@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Vuelidate from "vuelidate";
-import { loginRedirect, profileRedirect } from "./auth-guard";
+import { loginRedirect, profileRedirect, editTaskRedirect } from "./auth-guard";
 import ErrorPage from "@/components/Pages/Error";
 import Home from "@/components/Pages/Home";
 import About from "@/components/Pages/About";
@@ -57,18 +57,8 @@ const router = new Router({
     {
       path: "/edit-task/:id",
       name: "edit-task",
-      component: { task: PostEdit },
-      props: {
-        task: 0
-      },
-      redirect: to => {
-        console.log("toto", store.getters.tasks);
-        console.log("toto2", to.params.id);
-        console.log(
-          "todo3",
-          store.getters.tasks.find(task => task.id === to.params.id)
-        );
-      }
+      component: PostEdit,
+      beforeEnter: editTaskRedirect
     },
     {
       path: "/login",

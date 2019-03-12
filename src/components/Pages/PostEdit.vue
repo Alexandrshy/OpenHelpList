@@ -8,7 +8,7 @@
           class="subtitle"
         >You have your own small side project and you need help with solving some problem? Or do you want to try yourself as a mentor and reviewer? Describe your task and we will tell everyone about it!</p>
       </div>
-      <task-form></task-form>
+      <task-form :taskData="editTaskData"></task-form>
     </section>
   </div>
 </template>
@@ -20,6 +20,16 @@ export default {
   components: {
     titleProject: TitleProject,
     taskForm: TaskForm
+  },
+  data() {
+    return {
+      id: this.$route.params.id
+    };
+  },
+  computed: {
+    editTaskData() {
+      return this.$store.getters.taskById(this.id);
+    }
   }
 };
 </script>
