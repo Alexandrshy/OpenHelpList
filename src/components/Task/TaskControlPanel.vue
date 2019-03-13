@@ -1,6 +1,6 @@
 <template>
   <div v-if="typePage === 'Profile'" class="task__control-panel">
-    <router-link :to="`/edit-task/${taskID}`" class="task__control-button">Edit</router-link>
+    <router-link :to="`/edit-task/${taskID}`" class="task__control-button" tag="button">Edit</router-link>
     <button
       class="task__control-button"
       @click="updateCompletedTask"

@@ -143,12 +143,21 @@ export default {
     taskItem: TaskItem
   },
   beforeCreate() {
-    this.$store.dispatch("setBtnLoadingStatus", "Post a task");
+    this.$store.dispatch("setBtnLoadingStatus", "Save");
   },
   data() {
     return {
       tag: "",
-      tags: this.taskData ? this.taskData.tags : [],
+      tags: this.taskData
+        ? this.taskData.tags
+          ? this.taskData.tags.map(tag => {
+              return {
+                text: tag,
+                tiClasses: ["ti-valid"]
+              };
+            })
+          : []
+        : [],
       taskDesc: this.taskData ? this.taskData.description : "",
       taskTitle: this.taskData ? this.taskData.title : "",
       taskLink: this.taskData ? this.taskData.link : "",
@@ -182,14 +191,23 @@ export default {
         return false;
       }
       const task = this.getTask();
-      this.$store.dispatch("addTask", task).then(() => {
-        this.cleanForm();
-        this.preview = false;
-        this.$store.dispatch("setBtnLoadingStatus", "Post a task");
-        setTimeout(() => {
-          this.$store.dispatch("clearMessage");
-        }, 10000);
-      });
+      if (this.taskData) {
+        this.$store
+          .dispatch("updateTask", { task, id: this.taskData.id })
+          .then(() => {
+            this.$store.dispatch("setBtnLoadingStatus", "Save");
+            this.$router.push("/profile");
+          });
+      } else {
+        this.$store.dispatch("addTask", task).then(() => {
+          this.cleanForm();
+          this.preview = false;
+          this.$store.dispatch("setBtnLoadingStatus", "Save");
+          setTimeout(() => {
+            this.$store.dispatch("clearMessage");
+          }, 10000);
+        });
+      }
     },
     switchScreen() {
       this.$v.$touch();

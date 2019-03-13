@@ -39,8 +39,8 @@
           <div class="task__description-wrapper">
             <div class="task__description description" v-html="previewText(task.description)"></div>
           </div>
-          <ul class="tags-list" v-if="task.tag && task.tag.length">
-            <li class="tags-item" v-for="tag in task.tag" :key="tag">#{{tag}}</li>
+          <ul class="tags-list" v-if="task.tags && task.tags.length">
+            <li class="tags-item" v-for="tags in task.tags" :key="tags">#{{tags}}</li>
           </ul>
         </div>
         <div class="task__item-footer social-link" v-if="!preview && !editable">

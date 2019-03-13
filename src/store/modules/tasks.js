@@ -40,6 +40,19 @@ export default {
     addTask(state, payload) {
       state.tasks.push(payload);
     },
+    updateTask(state, { key, newTaskData }) {
+      let task = state.tasks.find(task => task.id === key);
+      task.author = newTaskData.author;
+      task.authorLink = newTaskData.authorLink;
+      task.authorName = newTaskData.authorName;
+      task.description = newTaskData.description;
+      task.link = newTaskData.link;
+      task.project = newTaskData.project;
+      task.projectLink = newTaskData.projectLink;
+      task.tags = newTaskData.tags;
+      task.title = newTaskData.title;
+      task.completed = false;
+    },
     deleteTask(state, payload) {
       state.tasks = state.tasks.filter(task => task.id !== payload);
     },
@@ -140,7 +153,59 @@ export default {
               title: "🙌 Success",
               status: "successful",
               message:
-                "Thank You! Your task is saved and very soon it will appear on the list."
+                "Thank You! Your task is saved and very soon it will appear on the list"
+            });
+            commit("setLoading", false);
+          });
+      } catch (error) {
+        commit("setMessage", {
+          title: "❗ Oh, something went wrong",
+          status: "error",
+          message: error.message
+        });
+        commit("setLoading", false);
+      }
+    },
+    async updateTask({ commit, getters }, payload) {
+      commit("setBtnLoadingStatus", "Please wait");
+      commit("clearMessage");
+      commit("setLoading", true);
+      try {
+        const {
+          authorLink,
+          projectLink,
+          projectTitle,
+          tagsList,
+          taskDesc,
+          taskLink,
+          taskTitle
+        } = payload.task;
+        const authorID = getters.userID;
+        const authorName = getters.userName;
+        const publicationDate = Date.now();
+        const updateTask = new Task(
+          authorID,
+          authorName,
+          authorLink,
+          projectLink,
+          projectTitle,
+          publicationDate,
+          tagsList,
+          taskDesc,
+          taskLink,
+          taskTitle
+        );
+        await fb
+          .database()
+          .ref("task")
+          .child(payload.id)
+          .update(updateTask)
+          .then(result => {
+            commit("updateTask", { key: payload.id, newTaskData: updateTask });
+            commit("setMessage", {
+              title: "🙌 Success",
+              status: "successful",
+              message: "Thank you! Your task has been updated"
             });
             commit("setLoading", false);
           });
